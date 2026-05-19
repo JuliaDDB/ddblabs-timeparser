@@ -126,10 +126,10 @@ public final class TimeParser {
             NORMALIZATIONS_RESOURCE,
             false,
             "month");
-    /** Preloaded literal weekday replacements used during mask matching and transformation. */
+    /** Preloaded regex weekday replacements used during mask matching and transformation. */
     private static final List<Replacement> WEEKDAY_REPLACEMENTS = loadConfiguredReplacements(
             NORMALIZATIONS_RESOURCE,
-            false,
+            true,
             "weekday");
 
     /** Shared stateless parser for translating rule masks and patterns into token streams. */

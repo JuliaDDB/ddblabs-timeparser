@@ -1,4 +1,4 @@
-ID,notation,earliestDate,latestDate,prefLabel@de,prefLabel@en,sortOrder
+id,notation,earliestDate,latestDate,prefLabelDe,prefLabelEn,sortOrder
 dat00109,time_12000,-4600000000,-590000000,Präkambrium,Precambrian,12000
 dat00108,time_13000,-590000000,-250000000,Paläozoikum,Palaeozoic,13000
 dat00107,time_14000,-250000000,-210000000,Trias,Triassic,14000

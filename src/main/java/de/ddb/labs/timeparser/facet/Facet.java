@@ -16,6 +16,7 @@
 package de.ddb.labs.timeparser.facet;
 
 import lombok.EqualsAndHashCode;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -24,6 +25,7 @@ import lombok.ToString;
  */
 @Getter
 @EqualsAndHashCode
+@AllArgsConstructor
 @ToString
 public class Facet {
 
@@ -33,16 +35,6 @@ public class Facet {
     private final Long latestDate;
     private final String prefLabelDe;
     private final String prefLabelEn;
-    private final String sortOrder;
+    private final int sortOrder;
 
-    public Facet(final String id, final String notation, final Long earliestDate, final Long latestDate,
-            final String prefLabelDe, final String prefLabelEn, final String sortOrder) {
-        this.id = id;
-        this.notation = notation;
-        this.earliestDate = earliestDate;
-        this.latestDate = latestDate;
-        this.prefLabelDe = prefLabelDe;
-        this.prefLabelEn = prefLabelEn;
-        this.sortOrder = sortOrder;
-    }
 }

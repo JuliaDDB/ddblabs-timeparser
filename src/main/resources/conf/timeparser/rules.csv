@@ -1,347 +1,347 @@
-input mask,input pattern,input example,tokenized example,output mask,output pattern,output example,output example ISO
-"#### ?",JJJJ ?,1923 ?,1923 ?,ca. ####,ca. JJJJ,ca. 1923,1922-01-01/1924-12-31
-"####-####/####",JJJJ-ZZZZ/YYYY,1944-1945/1949,1944-1945/1949,"####/####,####","JJJJ/ZZZZ,YYYY","1944/1945,1949",
-"####/###",JJJJ/ZZZ,2005/006,2005/006,"####/####",JJJJ/JZZZ,2005/2006,2005-01-01/2006-12-31
-"####/#### + ####",JJJJ/ZZZZ + YYYY,1965/1966 + 2009,1965/1966 + 2009,"####/####,####","JJJJ/ZZZZ,YYYY","1965/1966,2009",
-"###?",JJJ?,192?,192?,"###0/###9",JJJ0/JJJ9,1920/1929,1920-01-01/1929-12-31
-"##??",JJ??,19??,19??,"##00/##99",JJ00/JJ99,1900/1999,1900-01-01/1999-12-31
-- ####/####,- JJJJ/ZZZZ,- 2002/2003,- 2002/2003,bis ####,bis ZZZZ,bis 2003,2002-01-01/2003-12-31
-"#",J,5,5,000#,000J,0005,0005-01-01/0005-12-31
--#,-J,-5,-5,-000#,-000J,-0005,-0004-01-01/-0004-12-31
-"##",JJ,68,68,00##,00JJ,0068,0068-01-01/0068-12-31
--##,-JJ,-68,-68,-00##,-00JJ,-0068,-0067-01-01/-0067-12-31
-"## A (####)",NN A (JJJJ),61 A (1937),61 A (1937),"####",JJJJ,1937,1937-01-01/1937-12-31
-"## A (####.##.##)","## A (JJJJ.MM.TT)",61 A (1515.07.25),61 A (1515.07.25),"####-##-##",JJJJ-MM-TT,1515-07-25,1515-07-25/1515-07-25
-"###",JJJ,753,753,0###,0JJJ,0753,0753-01-01/0753-12-31
--###,-JJJ,-200,-200,-0###,-0JJJ,-0200,-0199-01-01/-0199-12-31
-"### MM",JJJ MM,753 Juni,753 MM,0###-##,0JJJ-MM,0753-06,0753-06-01/0753-06-30
-"### MM #",JJJ MM T,816 Mai 2,816 MM 2,0###-##-0#,0JJJ-MM-0T,0816-05-02,0816-05-02/0816-05-02
-"### MM # - ### MM ##",JJJ MM T - ZZZ YY XX,840 Mai 6 - 912 April 12,840 MM 6 - 912 MM 12,0###-##-0#/0###-##-##,0JJJ-MM-0T/0ZZZ-YY-XX,0840-05-06/0912-04-12,0840-05-06/0912-04-12
-"### MM ##",JJJ MM TT,774 September 24,774 MM 24,0###-##-##,0JJJ-MM-TT,0774-09-24,0774-09-24/0774-09-24
-"### MM [vor ##]",JJJ MM [vor TT],760 Juni [vor 10],760 MM [vor 10],vor 0###-##-##,vor 0JJJ-MM-TT,vor 0760-06-10,0660-06-10/0760-06-09
-"####-",JJJJ-,1858-,1858-,ab ####,ab JJJJ,ab 1858,1858-01-01/1868-12-31
-"#### -",JJJJ -,2009 -,2009 -,ab ####,ab JJJJ,ab 2009,2009-01-01/2010-12-31
-"#### - #",JJJJ - N,1848 - 9,1848 - 9,"####",JJJJ,1848,1848-01-01/1848-12-31
-"#### - ##",JJJJ - ZZ,1856 - 57,1856 - 57,"####",JJJJ,1856,1856-01-01/1856-12-31
-"#### - ## - ##",JJJJ - ZZ - VV,1846 - 47 - 57,1846 - 47 - 57,"####",JJJJ,1846,1846-01-01/1846-12-31
-"#### - ####",JJJJ - ZZZZ,1746 - 1751,1746 - 1751,"####/####",JJJJ/ZZZZ,1746/1751,1746-01-01/1751-12-31
-"#### ? ####",JJJJ ? ZZZZ,1946 ? 1950,1946 ? 1950,"####/####",JJJJ/ZZZZ,1946/1950,1946-01-01/1950-12-31
-"#### ? ####, ####","JJJJ ? ZZZZ, XXXX","1947 ? 1948, 1949","1947 ? 1948, 1949","####/####",JJJJ/XXXX,1947/1949,1947-01-01/1949-12-31
-"#### - ##. ####",JJJJ - NN. ZZZZ,1851 - 52. 1853,1851 - 52. 1853,"####/####",JJJJ/ZZZZ,1851/1853,1851-01-01/1853-12-31
-"#### ####",JJJJ ZZZZ,1282 1865,1282 1865,"####",JJJJ,1282,1282-01-01/1282-12-31
-"#### (####)",JJJJ (ZZZZ),1765 (1780),1765 (1780),"####",JJJJ,1765,1765-01-01/1765-12-31
-"#### (####/##) Aufnahme",JJJJ (ZZZZ/YY) Aufnahme,1375 (1996/97) Aufnahme,1375 (1996/97) Aufnahme,"####/####",ZZZZ/ZZYY,1996/1997,1996-01-01/1997-12-31
-"#### (####/##) Erstausgabe",JJJJ (ZZZZ/YY) Erstausgabe,1376 (1997/98) Erstausgabe,1376 (1997/98) Erstausgabe,"####/####",ZZZZ/ZZYY,1997/1998,1997-01-01/1998-12-31
-"#### (####/##) Erstdruck",JJJJ (ZZZZ/YY) Erstdruck,1374 (1995/96) Erstdruck,1374 (1995/96) Erstdruck,"####/####",ZZZZ/ZZYY,1995/1996,1995-01-01/1996-12-31
-"#### (####a)",JJJJ (ZZZZa),1765 (1765a),1765 (1765a),"####",JJJJ,1765,1765-01-01/1765-12-31
-"#### (####c)",JJJJ (ZZZZc),1750 (1750c),1750 (1750c),"####",JJJJ,1750,1750-01-01/1750-12-31
-"#### (##.#.####)",ZZZZ (TT.M.JJJJ),1913 (25.9.1913),1913 (25.9.1913),"####-0#-##",JJJJ-0M-TT,1913-09-25,1913-09-25/1913-09-25
-"#### (?)",JJJJ (?),1963 (?),1963 (?),ca. ####,ca. JJJJ,ca. 1963,1962-01-01/1964-12-31
-"#### (ca.)",JJJJ (ca.),1975 (ca.),1975 (ca.),ca. ####,ca. JJJJ,ca. 1975,1974-01-01/1976-12-31
-"#### (nach)",JJJJ (nach),1945 (nach),1945 (nach),nach ####,nach JJJJ,nach 1945,1945-01-01/1970-12-31
-"#### (Nachtr. ####)",JJJJ (Nachtr. ZZZZ),1980 (Nachtr. 1988),1980 (Nachtr. 1988),"####",JJJJ,1980,1980-01-01/1980-12-31
-"#### (Nachtrag ####/##)",JJJJ (Nachtrag ZZZZ/XX),1982 (Nachtrag 1985/87),1982 (Nachtrag 1985/87),"####",JJJJ,1982,1982-01-01/1982-12-31
-"#### (Original)",JJJJ (Original),1728 (Original),1728 (Original),"####",JJJJ,1728,1728-01-01/1728-12-31
-"#### (um)",JJJJ (um),1900 (um),1900 (um),um ####,um JJJJ,um 1900,1899-01-01/1901-12-31
-"#### (vor)",JJJJ (vor),1945 (vor),1945 (vor),vor ####,vor JJJJ,vor 1945,1942-01-01/1944-12-31
-"#### / #### (?)",JJJJ / ZZZZ (?),1911 / 1914 (?),1911 / 1914 (?),"####,####","JJJJ,ZZZZ","1911,1914",
-"#### [### H]",JJJJ [ZZZ H],1468 [873 H],1468 [873 H],"####",JJJJ,1468,1468-01-01/1468-12-31
-"#### [####]",ZZZZ [JJJJ],5792 [1792],5792 [1792],"####",JJJJ,1792,1792-01-01/1792-12-31
-"#### [erschienen ####]",JJJJ [erschienen ZZZZ],1602 [erschienen 1615],1602 [erschienen 1615],"####",JJJJ,1602,1602-01-01/1602-12-31
-"#### [erschienen ca. ####]",JJJJ [erschienen ca. ZZZZ],1766 [erschienen ca. 1770],1766 [erschienen ca. 1770],"####",JJJJ,1766,1766-01-01/1766-12-31
-"#### [erschienen] ####",JJJJ [erschienen] ZZZZ,1706 [erschienen] 1707,1706 [erschienen] 1707,"####",JJJJ,1706,1706-01-01/1706-12-31
-"#### [i. e. ####]",ZZZZ [i. e. JJJJ],1496 [i. e. 1796],1496 [i. e. 1796],"####",JJJJ,1796,1796-01-01/1796-12-31
-"#### [i.e. ####]",JJJJ [i.e. ZZZZ],1853 [i.e. 1753],1853 [i.e. 1753],"####",ZZZZ,1753,1753-01-01/1753-12-31
-"#### [nach ##.##.]",JJJJ [nach MM.TT.],1470 [nach 08.30.],1470 [nach 08.30.],nach ####-##-##,nach JJJJ-MM-TT,nach 1470-08-30,1470-08-30/1495-08-30
-"#### [nicht nach ##.##.]",JJJJ [nicht nach MM.TT.],1473 [nicht nach 07.28.],1473 [nicht nach 07.28.],vor ####-##-##,vor JJJJ-MM-TT,vor 1473-07-28,1423-07-28/1473-07-27
-"#### = ### [jüd. Zeit]",JJJJ = ZZZ [jüd. Zeit],1769 = 529 [jüd. Zeit],1769 = 529 [jüd. Zeit],"####",JJJJ,1769,1769-01-01/1769-12-31
-"#### = ####",JJJJ = ZZZZ,1836 = 1252,1836 = 1252,"####",JJJJ,1836,1836-01-01/1836-12-31
-"#### = #### [jüd. Zeit]",JJJJ = ZZZZ [jüd. Zeit],1800 = 5560 [jüd. Zeit],1800 = 5560 [jüd. Zeit],"####",JJJJ,1800,1800-01-01/1800-12-31
-"#### = #### h.",JJJJ = ZZZZ h.,1836 = 1252 h.,1836 = 1252 h.,"####",JJJJ,1836,1836-01-01/1836-12-31
-"#### = IV [Franz. Revolution]",JJJJ = IV [Franz. Revolution],1796 = IV [Franz. Revolution],1796 = IV [Franz. Revolution],"####",JJJJ,1796,1796-01-01/1796-12-31
-"#### = X [Franz. Revolution]",JJJJ = X [Franz. Revolution],1802 = X [Franz. Revolution],1802 = X [Franz. Revolution],"####",JJJJ,1802,1802-01-01/1802-12-31
-"#### ca.",JJJJ ca.,1490 ca.,1490 ca.,ca. ####,ca. JJJJ,ca. 1490,1485-01-01/1495-12-31
-"#### ff.",JJJJ ff.,1986 ff.,1986 ff.,nach ####,nach JJJJ,nach 1986,1986-01-01/2011-12-31
-"#### MM",JJJJ MM,1031 September,1031 MM,"####-##",JJJJ-MM,1031-09,1031-09-01/1031-09-30
-"#### MM #",JJJJ MM T,1019 Juli 1,1019 MM 1,"####-##-0#",JJJJ-MM-0T,1019-07-01,1019-07-01/1019-07-01
-"#### MM # / #### MM ##",JJJJ MM T / ZZZZ YY XX,1607 Mai 5 / 1607 Mai 15,1607 MM 5 / 1607 MM 15,"####-##-0#,####-##-##","JJJJ-MM-0T,ZZZZ-YY-XX","1607-05-05,1607-05-15",
-"#### MM ##",JJJJ MM TT,1012 Dezember 16,1012 MM 16,"####-##-##",JJJJ-MM-TT,1012-12-16,1012-12-16/1012-12-16
-"#### MM ## / ##",JJJJ MM TT / ZZ,1708 Januar 18 / 26,1708 MM 18 / 26,"####-##-##,####-##-##","JJJJ-MM-TT,JJJJ-MM-ZZ","1708-01-18,1708-01-26",
-"#### nachgewiesen",JJJJ nachgewiesen,1805 nachgewiesen,1805 nachgewiesen,"####",JJJJ,1805,1805-01-01/1805-12-31
-"#### u. ff.",JJJJ u. ff.,1852 u. ff.,1852 u. ff.,nach ####,nach JJJJ,nach 1852,1852-01-01/1877-12-31
-"#### u.####",JJJJ u.ZZZZ,1978 u.1981,1978 u.1981,"####,####","JJJJ,ZZZZ","1978,1981",
-"####-##",JJJJ-ZZ,1948-07,1948-07,"####",JJJJ,1948,1948-01-01/1948-12-31
-"####-##-##",JJJJ-MM-TT,1812-07-06,1812-07-06,"####-##-##",JJJJ-MM-TT,1812-07-06,1812-07-06/1812-07-06
-"####-#### (####-####)",JJJJ-ZZZZ (NNNN-OOOO),1750-1765 (1750-1765),1750-1765 (1750-1765),"####/####",JJJJ/ZZZZ,1750/1765,1750-01-01/1765-12-31
-"####-#### (##.me)",JJJJ-ZZZZ (NN.me),1740-1760 (18.me),1740-1760 (18.me),"####/####",JJJJ/ZZZZ,1740/1760,1740-01-01/1760-12-31
-"####-##-##/####-##-##",JJJJ-MM-TT/ZZZZ-YY-XX,1655-04-28/1658-07-17,1655-04-28/1658-07-17,"####-##-##/####-##-##",JJJJ-MM-TT/ZZZZ-YY-XX,1655-04-28/1658-07-17,1655-04-28/1658-07-17
-"####-##-##T##:##:##+##:##",JJJJ-MM-TTTHH:NN:SS+OO:PP,2001-04-04T15:45:00+01:00,2001-04-04T15:45:00+01:00,"####-##-##",JJJJ-MM-TT,2001-04-04,2001-04-04/2001-04-04
-"####-##-00",JJJJ-MM-00,2012-01-00,2012-01-00,"####-##",JJJJ-MM,2012-01,2012-01-01/2012-01-31
-"####(####) -",JJJJ(ZZZZ) -,2003(2004) -,2003(2004) -,ab ####,ab JJJJ,ab 2003,2003-01-01/2004-12-31
-"####(####) - ####(####)",JJJJ(ZZZZ) - XXXX(YYYY),2003(2004) - 2004(2005),2003(2004) - 2004(2005),"####/####",JJJJ/XXXX,2003/2004,2003-01-01/2004-12-31
-"####)",JJJJ),1938),1938),"####",JJJJ,1938,1938-01-01/1938-12-31
-"####, ####","JJJJ, ZZZZ","1684, 1750","1684, 1750","####,####","JJJJ,ZZZZ","1684,1750",
-"####, #### ? ####","JJJJ, ZZZZ ? XXXX","1945, 1947 ? 1949","1945, 1947 ? 1949","####/####",JJJJ/XXXX,1945/1949,1945-01-01/1949-12-31
-"####, ####, ####","JJJJ, ZZZZ, XXXX","1946, 1949, 1950","1946, 1949, 1950","####,####,####","JJJJ,ZZZZ,XXXX","1946,1949,1950",
-"####, ####, ####, ####","JJJJ, XXXX, YYYY, ZZZZ","1894, 1895, 1897, 1899","1894, 1895, 1897, 1899","####,####,####,####","JJJJ,XXXX,YYYY,ZZZZ","1894,1895,1897,1899",
-"####, ####, ####, ####, ####","JJJJ, XXXX, YYYY, ZZZZ, TTTT","1935, 1936, 1939, 1940, 1941","1935, 1936, 1939, 1940, 1941","####,####,####,####,####","JJJJ,XXXX,YYYY,ZZZZ,TTTT","1935,1936,1939,1940,1941",
-"####, ##.","JJJJ, MM.","1972, 02.","1972, 02.","####-##",JJJJ-MM,1972-02,1972-02-01/1972-02-29
-"####, ##. ##","JJJJ, MM. TT","1969, 05. 18","1969, 05. 18","####-##-##",JJJJ-MM-TT,1969-05-18,1969-05-18/1969-05-18
-"####, ##. MM","JJJJ, TT. MM","1909, 10. Januar","1909, 10. MM","####-##-##",JJJJ-MM-TT,1909-01-10,1909-01-10/1909-01-10
-"####, #. MM","JJJJ, T. MM","1909, 4. Januar","1909, 4. MM","####-##-0#",JJJJ-MM-0T,1909-01-04,1909-01-04/1909-01-04
-"####, (####)","JJJJ, (ZZZZ)","2008, (2008)","2008, (2008)","####",JJJJ,2008,2008-01-01/2008-12-31
-"####, [####?]","JJJJ, [ZZZZ?]","2005, [2005?]","2005, [2005?]",vermutlich ####,vermutlich JJJJ,vermutlich 2005,2005-01-01/2005-12-31
-"####, [####]","JJJJ, [ZZZZ]","2011, [2011]","2011, [2011]","####",JJJJ,2011,2011-01-01/2011-12-31
-"####, [ca. ####]","JJJJ, [ca. ZZZZ]","2007, [ca. 2007]","2007, [ca. 2007]",ca. ####,ca. JJJJ,ca. 2007,2006-01-01/2008-12-31
-"####, c ####","JJJJ, c ZZZZ","2009, c 2009","2009, c 2009","####",JJJJ,2009,2009-01-01/2009-12-31
-"####, MM","JJJJ, MM","1887, Oktober","1887, MM","####-##",JJJJ-MM,1887-10,1887-10-01/1887-10-31
-"####, MM-####, MM","JJJJ, MM-ZZZZ, YY","2006, Juni-2010, Nov","2006, MM-2010, MM","####-##/####-##",JJJJ-MM/ZZZZ-YY,2006-06/2010-11,2006-06-01/2010-11-30
-"####,# -","JJJJ,N -","2009,3 -","2009,3 -",ab ####,ab JJJJ,ab 2009,2009-01-01/2010-12-31
-"####. ##",JJJJ. NN,1845. 46,1845. 46,"####",JJJJ,1845,1845-01-01/1845-12-31
-"####. ####",JJJJ. ZZZZ,1866. 1867,1866. 1867,"####",JJJJ,1866,1866-01-01/1866-12-31
-"####. ##. ##",JJJJ. MM. TT,1967. 01. 19,1967. 01. 19,"####-##-##",JJJJ-MM-TT,1967-01-19,1967-01-19/1967-01-19
-"####.##",JJJJ.NN,1945.10,1945.10,"####",JJJJ,1945,1945-01-01/1945-12-31
-"####.##-##",JJJJ.NN-OO,1841.42-46,1841.42-46,"####",JJJJ,1841,1841-01-01/1841-12-31
-"####.##.",JJJJ.NN.,1927.05.,1927.05.,"####",JJJJ,1927,1927-01-01/1927-12-31
-"####.##.##",JJJJ.MM.TT,1500.08.26,1500.08.26,"####-##-##",JJJJ-MM-TT,1500-08-26,1500-08-26/1500-08-26
-"####.##.##.",JJJJ.MM.TT.,1489.03.21.,1489.03.21.,"####-##-##",JJJJ-MM-TT,1489-03-21,1489-03-21/1489-03-21
-"####.##.##.- ####.##.##.",JJJJ.MM.TT.- ZZZZ.YY.XX.,1906.02.09.- 1906.02.13.,1906.02.09.- 1906.02.13.,"####-##-##/####-##-##",JJJJ-MM-TT/ZZZZ-YY-XX,1906-02-09/1906-02-13,1906-02-09/1906-02-13
-"####/##",JJJJ/ZZ,1979/85,1979/85,"####,####","JJJJ,JJZZ","1979,1985",
--####/##,-JJJJ/ZZ,-1837/38,-1837/38,bis ####,bis JJZZ,bis 1838,1828-01-01/1838-12-31
-"####/## = IX [Franz. Revolution]",JJJJ/ZZ = IX [Franz. Revolution],1800/01 = IX [Franz. Revolution],1800/01 = IX [Franz. Revolution],"####/####",JJJJ/JJZZ,1800/1801,1800-01-01/1801-12-31
-"####/## = VI [Franz. Revolution]",JJJJ/ZZ = VI [Franz. Revolution],1797/98 = VI [Franz. Revolution],1797/98 = VI [Franz. Revolution],"####/####",JJJJ/JJZZ,1797/1798,1797-01-01/1798-12-31
-"####/## = VII [Franz. Revolution]",JJJJ/ZZ = VII [Franz. Revolution],1798/99 = VII [Franz. Revolution],1798/99 = VII [Franz. Revolution],"####/####",JJJJ/JJZZ,1798/1799,1798-01-01/1799-12-31
-"####/## = X [Franz. Revolution]",JJJJ/ZZ = X [Franz. Revolution],1801/02 = X [Franz. Revolution],1801/02 = X [Franz. Revolution],"####/####",JJJJ/JJZZ,1801/1802,1801-01-01/1802-12-31
-"####/#### (?)",JJJJ/ZZZZ (?),1900/1945 (?),1900/1945 (?),"####/####",JJJJ/ZZZZ,1900/1945,1900-01-01/1945-12-31
-"####/#### (Nachtrag ####)",JJJJ/ZZZZ (Nachtrag XXXX),1886/1988 (Nachtrag 1991),1886/1988 (Nachtrag 1991),"####,####","JJJJ,ZZZZ","1886,1988",
-"####/#### (um)",JJJJ/ZZZZ (um),1935/1950 (um),1935/1950 (um),um ####/um ####,um JJJJ/um ZZZZ,um 1935/um 1950,1934-01-01/1951-12-31
-"####/#### = VIII [Franz. Revolution]",JJJJ/ZZZZ = VIII [Franz. Revolution],1799/1800 = VIII [Franz. Revolution],1799/1800 = VIII [Franz. Revolution],"####/####",JJJJ/ZZZZ,1799/1800,1799-01-01/1800-12-31
-"####/##(####) -",JJJJ/XX(ZZZZ) -,2002/03(2003) -,2002/03(2003) -,ab ####,ab JJJJ,ab 2002,2002-01-01/2003-12-31
-"####/##.##.##",JJJJ/ZZ.MM.TT,1496/97.01.21,1496/97.01.21,"####-01-01/####-##-##",JJJJ-01-01/JJZZ-MM-TT,1496-01-01/1497-01-21,1496-01-01/1497-01-21
-"####/##/##",JJJJ/MM/TT,2012/01/15,2012/01/15,"####-##-##",JJJJ-MM-TT,2012-01-15,2012-01-15/2012-01-15
-"####/[####]",JJJJ/[ZZZZ],1287/[1870],1287/[1870],"####",JJJJ,1287,1287-01-01/1287-12-31
-"####?",JJJJ?,1965?,1965?,ca. ####,ca. JJJJ,ca. 1965,1964-01-01/1966-12-31
-"####= ### [jüd. Zeit]",JJJJ= ZZZ [jüd. Zeit],1698= 558 [jüd. Zeit],1698= 558 [jüd. Zeit],"####",JJJJ,1698,1698-01-01/1698-12-31
-"####-00-00",JJJJ-00-00,2012-00-00,2012-00-00,"####",JJJJ,2012,2012-01-01/2012-12-31
-"##,####","NN,JJJJ","05,1963","05,1963","####",JJJJ,1963,1963-01-01/1963-12-31
-"##. - ##. Jh.",JJ. - ZZ. Jh.,12. - 15. Jh.,12. - 15. Jh.,"##. Jahrhundert/##. Jahrhundert",JJ. Jahrhundert/ZZ. Jahrhundert,12. Jahrhundert/15. Jahrhundert,1101-01-01/1500-12-31
-"##. ? ##. MM ####",TT. ? XX. MM JJJJ,16. ? 17. März 1949,16. ? 17. MM 1949,"####-##-##/####-##-##",JJJJ-MM-TT/JJJJ-MM-XX,1949-03-16/1949-03-17,1949-03-16/1949-03-17
-"##. ####",NN. JJJJ,12. 1948,12. 1948,"####",JJJJ,1948,1948-01-01/1948-12-31
-"##. Jh.",JJ. Jh.,15. Jh.,15. Jh.,"##. Jahrhundert",JJ. Jahrhundert,15. Jahrhundert,1401-01-01/1500-12-31
-"##. Jh. (Anf.)",JJ. Jh. (Anf.),16. Jh. (Anf.),16. Jh. (Anf.),Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert,Anfang 16. Jahrhundert,1501-01-01/1515-12-31
-"##. MM ####",TT. MM JJJJ,22. Februar 1892,22. MM 1892,"####-##-##",JJJJ-MM-TT,1892-02-22,1892-02-22/1892-02-22
-"##. und ##. Jahrh.",JJ. und ZZ. Jahrh.,16. und 17. Jahrh.,16. und 17. Jahrh.,"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert","16. Jahrhundert,17. Jahrhundert",
-"##. und ##. Jh.",JJ. und ZZ. Jh.,15. und 16. Jh.,15. und 16. Jh.,"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert","15. Jahrhundert,16. Jahrhundert",
-"##.####",NN.JJJJ,10.1967,10.1967,"####",JJJJ,1967,1967-01-01/1967-12-31
-"##.#### -",NN.JJJJ -,64.2009 -,64.2009 -,ab ####,ab JJJJ,ab 2009,2009-01-01/2010-12-31
-"##.#### - ##.####; lückenhaft",NN.JJJJ - OO.ZZZZ; lückenhaft,87.1941 - 91.1944; lückenhaft,87.1941 - 91.1944; lückenhaft,"####/####",JJJJ/ZZZZ,1941/1944,1941-01-01/1944-12-31
-"##.-##. Jh.",JJ.-ZZ. Jh.,14.-15. Jh.,14.-15. Jh.,"##. Jahrhundert/##. Jahrhundert",JJ. Jahrhundert/ZZ. Jahrhundert,14. Jahrhundert/15. Jahrhundert,1301-01-01/1500-12-31
-"##.##.##",TT.MM.JJ,12.03.96,12.03.96,19##-##-##,19JJ-MM-TT,1996-03-12,1996-03-12/1996-03-12
-"##.##.####",TT.MM.JJJJ,01.01.2011,01.01.2011,"####-##-##",JJJJ-MM-TT,2011-01-01,2011-01-01/2011-01-01
-"##.-##.#. ####",TT.-XX.M. JJJJ,12.-15.3. 1904,12.-15.3. 1904,"####-0#-##/####-0#-##",JJJJ-0M-TT/JJJJ-0M-XX,1904-03-12/1904-03-15,1904-03-12/1904-03-15
-"##.##.0#",TT.MM.0J,12.03.00,12.03.00,200#-##-##,200J-MM-TT,2000-03-12,2000-03-12/2000-03-12
-"##.#.####",TT.M.JJJJ,11.2.1765,11.2.1765,"####-0#-##",JJJJ-0M-TT,1765-02-11,1765-02-11/1765-02-11
-"##./##. Jh.",JJ./ZZ. Jh.,19./20. Jh.,19./20. Jh.,"##. Jahrhundert/##. Jahrhundert",JJ. Jahrhundert/ZZ. Jahrhundert,19. Jahrhundert/20. Jahrhundert,1801-01-01/2000-12-31
-"##/##/####",MM/TT/JJJJ,10/27/1994,10/27/1994,"####-##-##",JJJJ-MM-TT,1994-10-27,1994-10-27/1994-10-27
-"##/#/####",MM/T/JJJJ,12/3/1960,12/3/1960,"####-##-0#",JJJJ-MM-0T,1960-12-03,1960-12-03/1960-12-03
-"##uu",JJuu,20uu,20uu,"##00/##99",JJ00/JJ99,2000/2099,2000-01-01/2099-12-31
-"##XX",JJXX,19XX,19XX,nach ##00,nach JJ00,nach 1900,1900-01-01/1925-12-31
-"#,####","M,JJJJ","5,1963","5,1963","####-0#",JJJJ-0M,1963-05,1963-05-01/1963-05-31
-"#. Drittel #. Jh.",Z. Drittel J. Jh.,1. Drittel 9. Jh.,1. Drittel 9. Jh.,"#. Drittel #. Jahrhundert",Z. Drittel J. Jahrhundert,1. Drittel 9. Jahrhundert,0801-01-01/0833-12-31
-"#. Hälfte ##. Jh.",Z. Hälfte JJ. Jh.,2. Hälfte 15. Jh.,2. Hälfte 15. Jh.,"#. Hälfte ##. Jahrhundert",Z. Hälfte JJ. Jahrhundert,2. Hälfte 15. Jahrhundert,1451-01-01/1500-12-31
-"#. Jh.",J. Jh.,9. Jh.,9. Jh.,"#. Jahrhundert",J. Jahrhundert,9. Jahrhundert,0801-01-01/0900-12-31
-"#. MM ####",T. MM JJJJ,1. Aug. 1862,1. MM 1862,"####-##-0#",JJJJ-MM-0T,1862-08-01,1862-08-01/1862-08-01
-"#. Viertel ##. Jh.",Z. Viertel JJ. Jh.,1. Viertel 15. Jh.,1. Viertel 15. Jh.,"#. Viertel ##. Jahrhundert",Z. Viertel JJ. Jahrhundert,1. Viertel 15. Jahrhundert,1401-01-01/1425-12-31
-"#. Viertel #. Jh.",Z. Viertel J. Jh.,2. Viertel 9. Jh.,2. Viertel 9. Jh.,"#. Viertel #. Jahrhundert",Z. Viertel J. Jahrhundert,2. Viertel 9. Jahrhundert,0826-01-01/0850-12-31
-"#.####",N.JJJJ,1.1975,1.1975,"####",JJJJ,1975,1975-01-01/1975-12-31
-"#.#### -",N.JJJJ -,2.2009 -,2.2009 -,ab ####,ab JJJJ,ab 2009,2009-01-01/2010-12-31
-"#.#### - ##.####",N.JJJJ - OO.ZZZZ,1.1919 - 23.1919,1.1919 - 23.1919,"####/####",JJJJ/ZZZZ,1919/1919,1919-01-01/1919-12-31
-"#.#### - #.####",N.JJJJ - O.ZZZZ,1.1915 - 2.1916,1.1915 - 2.1916,"####/####",JJJJ/ZZZZ,1915/1916,1915-01-01/1916-12-31
-"#.##.####",T.MM.JJJJ,9.12.1887,9.12.1887,"####-##-0#",JJJJ-MM-0T,1887-12-09,1887-12-09/1887-12-09
-"#.#.####",T.M.JJJJ,1.8.1955,1.8.1955,"####-0#-0#",JJJJ-0M-0T,1955-08-01,1955-08-01/1955-08-01
-"#/##/####",M/TT/JJJJ,2/28/1995,2/28/1995,"####-0#-##",JJJJ-0M-TT,1995-02-28,1995-02-28/1995-02-28
-"#/#/####",M/T/JJJJ,5/2/1996,5/2/1996,"####-0#-0#",JJJJ-0M-0T,1996-05-02,1996-05-02/1996-05-02
-(#### - ####),(JJJJ - ZZZZ),(1644 - 1647),(1644 - 1647),"####/####",JJJJ/ZZZZ,1644/1647,1644-01-01/1647-12-31
-(#### -) ####,(JJJJ -) ZZZZ,(1864 -) 1866,(1864 -) 1866,"####/####",JJJJ/ZZZZ,1864/1866,1864-01-01/1866-12-31
-(####),(JJJJ),(1972),(1972),"####",JJJJ,1972,1972-01-01/1972-12-31
-(####) ####,(JJJJ) ZZZZ,(1645) 1698,(1645) 1698,"####",ZZZZ,1698,1698-01-01/1698-12-31
-(####) = XI [Franz. Revolution],(JJJJ) = XI [Franz. Revolution],(1803) = XI [Franz. Revolution],(1803) = XI [Franz. Revolution],"####",JJJJ,1803,1803-01-01/1803-12-31
-(####.##.##),(JJJJ.MM.TT),(1498.12.24),(1498.12.24),"####-##-##",JJJJ-MM-TT,1498-12-24,1498-12-24/1498-12-24
-(####.##.##.),(JJJJ.MM.TT.),(1484.07.31.),(1484.07.31.),"####-##-##",JJJJ-MM-TT,1484-07-31,1484-07-31/1484-07-31
-(####/####) = VIII [Franz. Revolution],(JJJJ/ZZZZ) = VIII [Franz. Revolution],(1799/1800) = VIII [Franz. Revolution],(1799/1800) = VIII [Franz. Revolution],"####/####",JJJJ/ZZZZ,1799/1800,1799-01-01/1800-12-31
-(####/##) = IX [Franz. Revolution],(JJJJ/ZZ) = IX [Franz. Revolution],(1800/01) = IX [Franz. Revolution],(1800/01) = IX [Franz. Revolution],"####/####",JJJJ/JJZZ,1800/1801,1800-01-01/1801-12-31
-(####/##) = VII [Franz. Revolution],(JJJJ/ZZ) = VII [Franz. Revolution],(1798/99) = VII [Franz. Revolution],(1798/99) = VII [Franz. Revolution],"####/####",JJJJ/JJZZ,1798/1799,1798-01-01/1799-12-31
-([####-####],([JJJJ-ZZZZ],([1770-1790],([1770-1790],"####/####",JJJJ/ZZZZ,1770/1790,1770-01-01/1790-12-31
-(c. ####),(c. JJJJ),(c. 1860),(c. 1860),ca. ####,ca. JJJJ,ca. 1860,1858-01-01/1862-12-31
-(ca. ####),(ca. JJJJ),(ca. 1850),(ca. 1850),ca. ####,ca. JJJJ,ca. 1850,1848-01-01/1852-12-31
-[### MM #],[JJJ MM T],[751 November 4],[751 MM 4],0###-##-0#,0JJJ-MM-0T,0751-11-04,0751-11-04/0751-11-04
-[#### - ####],[JJJJ - ZZZZ],[1469 - 1470],[1469 - 1470],"####/####",JJJJ/ZZZZ,1469/1470,1469-01-01/1470-12-31
-[#### ?],[JJJJ ?],[1843 ?],[1843 ?],ca. ####,ca. JJJJ,ca. 1843,1841-01-01/1845-12-31
-[#### Jh.],[JJZZ Jh.],[1500 Jh.],[1500 Jh.],"##. Jahrhundert",JJ. Jahrhundert,15. Jahrhundert,1401-01-01/1500-12-31
-[#### MM #],[JJJJ MM T],[1623 Dezember 2],[1623 MM 2],"####-##-0#",JJJJ-MM-0T,1623-12-02,1623-12-02/1623-12-02
-[####-####],[JJJJ-ZZZZ],[1650-1674],[1650-1674],"####/####",JJJJ/ZZZZ,1650/1674,1650-01-01/1674-12-31
-[####-####],[JJJJ-ZZZZ],[1770-1790],[1770-1790],"####/####",JJJJ/ZZZZ,1770/1790,1770-01-01/1790-12-31
-[####/##],[JJJJ/ZZ],[1979/80],[1979/80],"####,####","JJJJ,JJZZ","1979,1980",
-[####?],[JJJJ?],[1868?],[1868?],vermutlich ####,vermutlich JJJJ,vermutlich 1868,1868-01-01/1868-12-31
-[####],[JJJJ],[1495],[1495],"####",JJJJ,1495,1495-01-01/1495-12-31
-[####] = ####,[JJJJ] = ZZZZ,[1830] = 1246,[1830] = 1246,"####",JJJJ,1830,1830-01-01/1830-12-31
-[####] = #### [h.],[JJJJ] = ZZZZ [h.],[1862] = 1278 [h.],[1862] = 1278 [h.],"####",JJJJ,1862,1862-01-01/1862-12-31
-[####] = #### h.,[JJJJ] = ZZZZ h.,[1871] = 1288 h.,[1871] = 1288 h.,"####",JJJJ,1871,1871-01-01/1871-12-31
-[###] MM ##,[JJJ] MM TT,[855] Mai 22,[855] MM 22,0###-##-##,0JJJ-MM-TT,0855-05-22,0855-05-22/0855-05-22
-[##. - ##. Jh.],[JJ. - ZZ. Jh.],[15. - 16. Jh.],[15. - 16. Jh.],"##. Jahrhundert/##. Jahrhundert",JJ. Jahrhundert/ZZ. Jahrhundert,15. Jahrhundert/16. Jahrhundert,1401-01-01/1600-12-31
-[##. Jahrh.],[JJ. Jahrh.],[12. Jahrh.],[12. Jahrh.],"##. Jahrhundert",JJ. Jahrhundert,12. Jahrhundert,1101-01-01/1200-12-31
-[##. Jh. Anfang],[JJ. Jh. Anfang],[16. Jh. Anfang],[16. Jh. Anfang],Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert,Anfang 16. Jahrhundert,1501-01-01/1515-12-31
-[##. Jh.],[JJ. Jh.],[18. Jh.],[18. Jh.],"##. Jahrhundert",JJ. Jahrhundert,18. Jahrhundert,1701-01-01/1800-12-31
-[##. und ##. Jh.],[JJ. und ZZ. Jh.],[15. und 16. Jh.],[15. und 16. Jh.],"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert","15. Jahrhundert,16. Jahrhundert",
-[##]##,[JJ]ZZ,[15]58,[15]58,"####",JJZZ,1558,1558-01-01/1558-12-31
-[##]##.##.##.,[JJ]ZZ.MM.TT.,[14]78.05.07.,[14]78.05.07.,"####-##-##",JJZZ-MM-TT,1478-05-07,1478-05-07/1478-05-07
-[#. Drittel ##. Jh.],[Z. Drittel JJ. Jh.],[1. Drittel 18. Jh.],[1. Drittel 18. Jh.],"#. Drittel ##. Jahrhundert",Z. Drittel JJ. Jahrhundert,1. Drittel 18. Jahrhundert,1701-01-01/1733-12-31
-[#. Drittel des ##. Jh.],[Z. Drittel des JJ. Jh.],[3. Drittel des 13. Jh.],[3. Drittel des 13. Jh.],"#. Drittel ##. Jahrhundert",Z. Drittel JJ. Jahrhundert,3. Drittel 13. Jahrhundert,1267-01-01/1299-12-31
-[#. Drittel des #. Jh.],[Z. Drittel des J. Jh.],[1. Drittel des 9. Jh.],[1. Drittel des 9. Jh.],"#. Drittel #. Jahrhundert",Z. Drittel J. Jahrhundert,1. Drittel 9. Jahrhundert,0801-01-01/0833-12-31
-[#. Hälfte ##. Jahrh.],[Z. Hälfte JJ. Jahrh.],[1. Hälfte 19. Jahrh.],[1. Hälfte 19. Jahrh.],"#. Hälfte ##. Jahrhundert",Z. Hälfte JJ. Jahrhundert,1. Hälfte 19. Jahrhundert,1801-01-01/1850-12-31
-[#. Hälfte ##. Jh.],[Z. Hälfte JJ. Jh.],[1. Hälfte 18. Jh.],[1. Hälfte 18. Jh.],"#. Hälfte ##. Jahrhundert",Z. Hälfte JJ. Jahrhundert,1. Hälfte 18. Jahrhundert,1701-01-01/1750-12-31
-[#. Hälfte des ##. Jh.],[Z. Hälfte des JJ. Jh.],[2. Hälfte des 15. Jh.],[2. Hälfte des 15. Jh.],"#. Hälfte ##. Jahrhundert",Z. Hälfte JJ. Jahrhundert,2. Hälfte 15. Jahrhundert,1451-01-01/1500-12-31
-[#. Jh.],[J. Jh.],[9. Jh.],[9. Jh.],"#. Jahrhundert",J. Jahrhundert,9. Jahrhundert,0801-01-01/0900-12-31
-[#. Quartal ##. Jh.],[Z. Quartal JJ. Jh.],[1. Quartal 18. Jh.],[1. Quartal 18. Jh.],"#. Viertel ##. Jahrhundert",Z. Viertel JJ. Jahrhundert,1. Viertel 18. Jahrhundert,1701-01-01/1725-12-31
-[#. Quartal ##. Jh.],[Z. Quartal JJ. Jh.],[2. Quartal 18. Jh.],[2. Quartal 18. Jh.],"#. Viertel ##. Jahrhundert",Z. Viertel JJ. Jahrhundert,2. Viertel 18. Jahrhundert,1726-01-01/1750-12-31
-[(####)],[(JJJJ)],[(1853)],[(1853)],"####",JJJJ,1853,1853-01-01/1853-12-31
-[Anfang ##. Jh.],[Anfang JJ. Jh.],[Anfang 10. Jh.],[Anfang 10. Jh.],Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert,Anfang 10. Jahrhundert,0901-01-01/0915-12-31
-[Anno ####],[Anno JJJJ],[Anno 1643],[Anno 1643],"####",JJJJ,1643,1643-01-01/1643-12-31
-[c ####],[c JJJJ],[c 1687],[c 1687],"####",JJJJ,1687,1687-01-01/1687-12-31
-[c. ####],[c. JJJJ],[c. 1850],[c. 1850],ca. ####,ca. JJJJ,ca. 1850,1848-01-01/1852-12-31
-[ca. #### - ####],[ca. JJJJ - ZZZZ],[ca. 1200 - 1250],[ca. 1200 - 1250],ca. ####/####,ca. JJJJ/ZZZZ,ca. 1200/1250,1195-01-01/1250-12-31
-[ca. ####-####],[ca. JJJJ-ZZZZ],[ca. 1970-1985],[ca. 1970-1985],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1970/ca. 1985,1969-01-01/1986-12-31
-[ca. ####-##],[ca. JJJJ-ZZ],[ca. 1492-96],[ca. 1492-96],ca. ####/ca. ####,ca. JJJJ/ca. JJZZ,ca. 1492/ca. 1496,1487-01-01/1501-12-31
-[ca. ####/####],[ca. JJJJ/ZZZZ],[ca. 1498/1500],[ca. 1498/1500],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1498/ca. 1500,1493-01-01/1505-12-31
-[ca. ####/##],[ca. JJJJ/ZZ],[ca. 1481/87],[ca. 1481/87],ca. ####/ca. ####,ca. JJJJ/ca. JJZZ,ca. 1481/ca. 1487,1476-01-01/1492-12-31
-[ca. ####?],[ca. JJJJ?],[ca. 1500?],[ca. 1500?],ca. ####,ca. JJJJ,ca. 1500,1495-01-01/1505-12-31
-[ca. ####],[ca. JJJJ],[ca. 1965],[ca. 1965],ca. ####,ca. JJJJ,ca. 1965,1964-01-01/1966-12-31
-[ca.####],[ca.JJJJ],[ca.1850],[ca.1850],ca. ####,ca. JJJJ,ca. 1850,1848-01-01/1852-12-31
-[circa ####],[circa JJJJ],[circa 1533],[circa 1533],ca. ####,ca. JJJJ,ca. 1533,1528-01-01/1538-12-31
-[ersch. ####],[ersch. JJJJ],[ersch. 1720],[ersch. 1720],"####",JJJJ,1720,1720-01-01/1720-12-31
-[i.e. ####?],[i.e. JJJJ?],[i.e. 1767?],[i.e. 1767?],vermutlich ####,vermutlich JJJJ,vermutlich 1767,1767-01-01/1767-12-31
-[i.e.####],[i.e.JJJJ],[i.e.1625],[i.e.1625],"####",JJJJ,1625,1625-01-01/1625-12-31
-[MM ####],[MM JJJJ],[Dez. 1503],[MM 1503],"####-##",JJJJ-MM,1503-12,1503-12-01/1503-12-31
-[nach ####.##.##.],[nach JJJJ.MM.TT.],[nach 1491.03.02.],[nach 1491.03.02.],nach ####-##-##,nach JJJJ-MM-TT,nach 1491-03-02,1491-03-02/1516-03-02
-[nach ####.##.##],[nach JJJJ.MM.TT],[nach 1496.02.24],[nach 1496.02.24],nach ####-##-##,nach JJJJ-MM-TT,nach 1496-02-24,1496-02-24/1521-02-24
-[nach ####?],[nach JJJJ?],[nach 1500?],[nach 1500?],nach ####,nach JJJJ,nach 1500,1500-01-01/1525-12-31
-[nach ####],[nach JJJJ],[nach 1472],[nach 1472],nach ####,nach JJJJ,nach 1472,1472-01-01/1497-12-31
-[nach ##. MM ####],[nach TT. MM JJJJ],[nach 23. Mai 1498],[nach 23. MM 1498],nach ####-##-##,nach JJJJ-MM-TT,nach 1498-05-23,1498-05-23/1523-05-23
-[nach #. MM ####],[nach T. MM JJJJ],[nach 8. Mai 1497],[nach 8. MM 1497],nach ####-##-0#,nach JJJJ-MM-0T,nach 1497-05-08,1497-05-08/1522-05-08
-[nicht nach ####.##.##.],[nicht nach JJJJ.MM.TT.],[nicht nach 1476.06.15.],[nicht nach 1476.06.15.],vor ####-##-##,vor JJJJ-MM-TT,vor 1476-06-15,1426-06-15/1476-06-14
-[nicht nach ####],[nicht nach JJJJ],[nicht nach 1474],[nicht nach 1474],vor ####,vor JJJJ,vor 1474,1424-01-01/1473-12-31
-[nicht vor ####.##.##.],[nicht vor JJJJ.MM.TT.],[nicht vor 1499.03.28.],[nicht vor 1499.03.28.],nach ####-##-##,nach JJJJ-MM-TT,nach 1499-03-28,1499-03-28/1524-03-28
-[nicht vor ####.##.##],[nicht vor JJJJ.MM.TT],[nicht vor 1499.12.22],[nicht vor 1499.12.22],nach ####-##-##,nach JJJJ-MM-TT,nach 1499-12-22,1499-12-22/1524-12-22
-[nicht vor ####.##.],[nicht vor JJJJ.MM.],[nicht vor 1492.05.],[nicht vor 1492.05.],nach ####-##,nach JJJJ-MM,nach 1492-05,1492-05-01/1517-05-31
-[nicht vor ####],[nicht vor JJJJ],[nicht vor 1777],[nicht vor 1777],nach ####,nach JJJJ,nach 1777,1777-01-01/1802-12-31
-[um #### - ####],[um JJJJ - ZZZZ],[um 1710 - 1729],[um 1710 - 1729],um ####/####,um JJJJ/ZZZZ,um 1710/1729,1708-01-01/1729-12-31
-[um #### - um ####],[um JJJJ - um ZZZZ],[um 1675 - um 1750],[um 1675 - um 1750],um ####/####,um JJJJ/ZZZZ,um 1675/1750,1670-01-01/1750-12-31
-[um ####/##],[um JJJJ/ZZ],[um 1460/65],[um 1460/65],"um ####,um ####","um JJJJ,um JJZZ","um 1460,um 1465",
-[um ####?],[um JJJJ?],[um 1470?],[um 1470?],vermutlich ####,vermutlich JJJJ,vermutlich 1470,1470-01-01/1470-12-31
-[um ####],[um JJJJ],[um 1350],[um 1350],um ####,um JJJJ,um 1350,1345-01-01/1355-12-31
-[um ####],[um JJJJ],[um 1550],[um 1550],um ####,um JJJJ,um 1550,1545-01-01/1555-12-31
-[vor ####.##.##.],[vor JJJJ.MM.TT.],[vor 1473.06.05.],[vor 1473.06.05.],vor ####-##-##,vor JJJJ-MM-TT,vor 1473-06-05,1423-06-05/1473-06-04
-[vor ####],[vor JJJJ],[vor 1900],[vor 1900],vor ####,vor JJJJ,vor 1900,1897-01-01/1899-12-31
-an VII [i.e.####/##],an VII [i.e.JJJJ/ZZ],an VII [i.e.1797/98],an VII [i.e.1797/98],"####,####","JJJJ,JJZZ","1797,1798",
-Anfang ##. Jh.,Anfang JJ. Jh.,Anfang 17. Jh.,Anfang 17. Jh.,Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert,Anfang 17. Jahrhundert,1601-01-01/1615-12-31
-Anfang #. Jh.,Anfang J. Jh.,Anfang 9. Jh.,Anfang 9. Jh.,Anfang #. Jahrhundert,Anfang J. Jahrhundert,Anfang 9. Jahrhundert,0801-01-01/0815-12-31
-c ####,c JJJJ,c 1898,c 1898,ca. ####,ca. JJJJ,ca. 1898,1896-01-01/1900-12-31
-c. ####,c. JJJJ,c. 1860,c. 1860,ca. ####,ca. JJJJ,ca. 1860,1858-01-01/1862-12-31
-circa ####,circa JJJJ,circa 1865,circa 1865,ca. ####,ca. JJJJ,ca. 1865,1863-01-01/1867-12-31
-Ende ##. Jh.,Ende JJ. Jh.,Ende 14. Jh.,Ende 14. Jh.,Ende ##. Jahrhundert,Ende JJ. Jahrhundert,Ende 14. Jahrhundert,1385-01-01/1400-12-31
-Ende ##. Jh./Anfang ##. Jh.,Ende JJ. Jh./Anfang ZZ. Jh.,Ende 15. Jh./Anfang 16. Jh.,Ende 15. Jh./Anfang 16. Jh.,"Ende ##. Jahrhundert,Anfang ##. Jahrhundert","Ende JJ. Jahrhundert,Anfang ZZ. Jahrhundert","Ende 15. Jahrhundert,Anfang 16. Jahrhundert",
-frühes ##. Jahrhundert,frühes JJ. Jahrhundert,frühes 20. Jahrhundert,frühes 20. Jahrhundert,Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert,Anfang 20. Jahrhundert,1901-01-01/1915-12-31
-Geistesgeschichte ####-####,Geistesgeschichte JJJJ-ZZZZ,Geistesgeschichte 1400-1600,Geistesgeschichte 1400-1600,"####/####",JJJJ/ZZZZ,1400/1600,1400-01-01/1600-12-31
-Geschichte ### v. Chr.-###,Geschichte JJJ v. Chr.-ZZZ,Geschichte 800 v. Chr.-500,Geschichte 800 v. Chr.-500,-0###/0###,-0JJJ/0ZZZ,-0800/0500,-0799-01-01/0500-12-31
-Geschichte ### v. Chr.-### v. Chr.,Geschichte JJJ v. Chr.-ZZZ v. Chr.,Geschichte 700 v. Chr.-400 v. Chr.,Geschichte 700 v. Chr.-400 v. Chr.,-0###/-0###,-0JJJ/-0ZZZ,-0700/-0400,-0699-01-01/-0399-12-31
-Geschichte ####,Geschichte JJJJ,Geschichte 1555,Geschichte 1555,"####",JJJJ,1555,1555-01-01/1555-12-31
-Geschichte ####,Geschichte JJJJ,Geschichte 1848,Geschichte 1848,"####",JJJJ,1848,1848-01-01/1848-12-31
-Geschichte ####-,Geschichte JJJJ-,Geschichte 1945-,Geschichte 1945-,ab ####,ab JJJJ,ab 1945,1945-01-01/1948-12-31
-Geschichte -####,Geschichte -JJJJ,Geschichte -1622,Geschichte -1622,bis ####,bis JJJJ,bis 1622,1597-01-01/1622-12-31
-Geschichte #### - ####,Geschichte JJJJ - ZZZZ,Geschichte 1939 - 1945,Geschichte 1939 - 1945,"####/####",JJJJ/ZZZZ,1939/1945,1939-01-01/1945-12-31
-Geschichte #### v.Chr.-####,Geschichte JJJJ v.Chr.-ZZZZ,Geschichte 0100 v.Chr.-1300,Geschichte 0100 v.Chr.-1300,-####/####,-JJJJ/ZZZZ,-0100/1300,-0099-01-01/1300-12-31
-Geschichte ###-###,Geschichte JJJ-ZZZ,Geschichte 500-900,Geschichte 500-900,0###/0###,0JJJ/0ZZZ,0500/0900,0500-01-01/0900-12-31
-Geschichte ###-####,Geschichte JJJ-ZZZZ,Geschichte 500-1500,Geschichte 500-1500,0###/####,0JJJ/ZZZZ,0500/1500,0500-01-01/1500-12-31
-Geschichte ####-####,Geschichte JJJJ-ZZZZ,Geschichte 1806-1918,Geschichte 1806-1918,"####/####",JJJJ/ZZZZ,1806/1918,1806-01-01/1918-12-31
-Geschichte Anfänge-####,Geschichte Anfänge-JJJJ,Geschichte Anfänge-1919,Geschichte Anfänge-1919,bis ####,bis JJJJ,bis 1919,1916-01-01/1919-12-31
-Geschichte Anfänge-####,Geschichte Anfänge-JJJJ,Geschichte Anfänge-1500,Geschichte Anfänge-1500,bis ####,bis JJJJ,bis 1500,1475-01-01/1500-12-31
-"GG, ##. MM ####","GG, TT. MM JJJJ","Sonntag, 17. Juni 2012","GG, 17. MM 2012","####-##-##",JJJJ-MM-TT,2012-06-17,2012-06-17/2012-06-17
-"GG, ##.##.####","GG, TT.MM.JJJJ","Sonntag, 17.06.2012","GG, 17.06.2012","####-##-##",JJJJ-MM-TT,2012-06-17,2012-06-17/2012-06-17
-Karolingisch,Karolingisch,Karolingisch,Karolingisch,0750/0911,0750/0911,0750/0911,0750-01-01/0911-12-31
-Klassizistisch,Klassizistisch,Klassizistisch,Klassizistisch,1770/1830,1770/1830,1770/1830,1770-01-01/1830-12-31
-Mitte ##. Jh.,Mitte JJ. Jh.,Mitte 19. Jh.,Mitte 19. Jh.,Mitte ##. Jahrhundert,Mitte JJ. Jahrhundert,Mitte 19. Jahrhundert,1845-01-01/1855-12-31
-MM ? MM ####,MM ? YY JJJJ,März ? Dez. 1949,MM ? MM 1949,"####-##/####-##",JJJJ-MM/JJJJ-YY,1949-03/1949-12,1949-03-01/1949-12-31
-MM ####,MM JJJJ,Sept. 1871,MM 1871,"####-##",JJJJ-MM,1871-09,1871-09-01/1871-09-30
-MM #### ? MM ####,MM JJJJ ? YY ZZZZ,Sept. 1946 ? Jan. 1947,MM 1946 ? MM 1947,"####-##/####-##",JJJJ-MM/ZZZZ-YY,1946-09/1947-01,1946-09-01/1947-01-31
-Nachgewiesen #### -,Nachgewiesen JJJJ -,Nachgewiesen 2003 -,Nachgewiesen 2003 -,ab ####,ab JJJJ,ab 2003,2003-01-01/2004-12-31
-Nachgewiesen ####(####) -,Nachgewiesen JJJJ(ZZZZ) -,Nachgewiesen 2010(2009) -,Nachgewiesen 2010(2009) -,ab ####,ab JJJJ,ab 2010,2010-01-01/2011-12-31
-Nachgewiesen ##.#### -,Nachgewiesen NN.JJJJ -,Nachgewiesen 32.2001 -,Nachgewiesen 32.2001 -,ab ####,ab JJJJ,ab 2001,2001-01-01/2002-12-31
-Nachgewiesen #.#### -,Nachgewiesen N.JJJJ -,Nachgewiesen 6.2001 -,Nachgewiesen 6.2001 -,ab ####,ab JJJJ,ab 2001,2001-01-01/2002-12-31
-Nr. #.#### -,Nr. N.JJJJ -,Nr. 1.2011 -,Nr. 1.2011 -,ab ####,ab JJJJ,ab 2011,2011-01-01/2012-12-31
-Ottonisch,Ottonisch,Ottonisch,Ottonisch,0936/1024,0936/1024,0936/1024,0936-01-01/1024-12-31
-Römisch,Römisch,Römisch,Römisch,-500/395,-500/395,-500/395,-0499-01-01/0395-12-31
-s.a. [####],s.a. [JJJJ],s.a. [1868],s.a. [1868],"####",JJJJ,1868,1868-01-01/1868-12-31
-s.a. [ca. ####-####],s.a. [ca. JJJJ-ZZZZ],s.a. [ca. 1830-1840],s.a. [ca. 1830-1840],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1830/ca. 1840,1828-01-01/1842-12-31
-s.a. [ca. ####],s.a. [ca. JJJJ],s.a. [ca. 1860],s.a. [ca. 1860],ca. ####,ca. JJJJ,ca. 1860,1858-01-01/1862-12-31
-s.a. [nach ####],s.a. [nach JJJJ],s.a. [nach 1715],s.a. [nach 1715],nach ####,nach JJJJ,nach 1715,1715-01-01/1740-12-31
-s.a. [circa ####],s.a. [circa JJJJ],s.a. [vermutlich 1850],s.a. [circa 1850],"####",JJJJ,1850,1850-01-01/1850-12-31
-s.a. [zwischen #### u. ####],s.a. [zwischen JJJJ u. ZZZZ],s.a. [zwischen 1730 u. 1760],s.a. [zwischen 1730 u. 1760],"####/####",JJJJ/ZZZZ,1730/1760,1730-01-01/1760-12-31
-Sozialgeschichte ####-####,Sozialgeschichte JJJJ-ZZZZ,Sozialgeschichte 1800-1900,Sozialgeschichte 1800-1900,"####/####",JJJJ/ZZZZ,1800/1900,1800-01-01/1900-12-31
--SS ####,-SS JJJJ,-SS 2003,-SS 2003,"####",JJJJ,2003,2003-01-01/2003-12-31
-um ###,um JJJ,um 800,um 800,um 0###,um 0JJJ,um 0800,0790-01-01/0810-12-31
-um #### - ####,um JJJJ - ZZZZ,um 1554 - 1555,um 1554 - 1555,um ####/um ####,um JJJJ/um ZZZZ,um 1554/um 1555,1549-01-01/1560-12-31
-um ####-####,um JJJJ-ZZZZ,um 1568-1569,um 1568-1569,um ####/um ####,um JJJJ/um ZZZZ,um 1568/um 1569,1563-01-01/1574-12-31
-um ####/##,um JJJJ/ZZ,um 1648/50,um 1648/50,um ####/um ####,um JJJJ/um JJZZ,um 1648/um 1650,1643-01-01/1655-12-31
-um ####/####,um JJJJ/ZZZZ,um 1645/1646,um 1645/1646,um ####/um ####,um JJJJ/um ZZZZ,um 1645/um 1646,1640-01-01/1651-12-31
-"#.#### - ###.####[?]",Q.JJJJ - NNN.ZZZZ[?],1.1972 - 390.1930[?],1.1972 - 390.1930[?],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1972/ca. 1930,1971-01-01/1931-12-31
-"#.#### - ####/##.####[?]",W.JJJJ - NNNN/QQ.ZZZZ[?],1.1886 - 2569/73.1926[?],1.1886 - 2569/73.1926[?],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1886/ca. 1926,1884-01-01/1927-12-31
-"#.#### - ##.[####][?]",N.JJJJ - QQ.[ZZZZ][?],1.1911 - 84.[1923][?],1.1911 - 84.[1923][?],ca. ####/ca. ####,ca. JJJJ/ca. ZZZZ,ca. 1911/ca. 1923,1910-01-01/1924-12-31
-"####-####",JJJJ-ZZZZ,1973-2009,1973-2009,"####/####",JJJJ/ZZZZ,1973/2009,1973-01-01/2009-12-31
-"#.#### - ##.#### = Nr. #-###",P.JJJJ - NN.ZZZZ = Nr. Q-WWW,1.1912 - 46.1936 = Nr. 1-411,1.1912 - 46.1936 = Nr. 1-411,"####/####",JJJJ/ZZZZ,1912/1936,1912-01-01/1936-12-31
-Nachgewiesen #### - ####,Nachgewiesen JJJJ - ZZZZ,Nachgewiesen 1999 - 2007,Nachgewiesen 1999 - 2007,"####/####",JJJJ/ZZZZ,1999/2007,1999-01-01/2007-12-31
-"# v. Chr.",J v. Chr.,2 v. Chr.,2 v. Chr.,-#,-J,-2,-0001-01-01/-0001-12-31
-"## v. Chr.",JJ v. Chr.,20 v. Chr.,20 v. Chr.,-##,-JJ,-20,-0019-01-01/-0019-12-31
-"### v. Chr.",JJJ v. Chr.,200 v. Chr.,200 v. Chr.,-###,-JJJ,-200,-0199-01-01/-0199-12-31
-"#### v. Chr.",JJJJ v. Chr.,2000 v. Chr.,2000 v. Chr.,-####,-JJJJ,-2000,-1999-01-01/-1999-12-31
-"##### v. Chr.",JJJJJ v. Chr.,20000 v. Chr.,20000 v. Chr.,-#####,-JJJJJ,-20000,-19999-01-01/-19999-12-31
-"###### v. Chr.",JJJJJJ v. Chr.,200000 v. Chr.,200000 v. Chr.,-######,-JJJJJJ,-200000,-199999-01-01/-199999-12-31
-"####### v. Chr.",JJJJJJJ v. Chr.,2000000 v. Chr.,2000000 v. Chr.,-#######,-JJJJJJJ,-2000000,-1999999-01-01/-1999999-12-31
-"######## v. Chr.",JJJJJJJJ v. Chr.,20000000 v. Chr.,20000000 v. Chr.,-########,-JJJJJJJJ,-20000000,-19999999-01-01/-19999999-12-31
-"######### v. Chr.",JJJJJJJJJ v. Chr.,200000000 v. Chr.,200000000 v. Chr.,-#########,-JJJJJJJJJ,-200000000,-199999999-01-01/-199999999-12-31
-vor # Mio. Jahren,vor J Mio. Jahren,vor 5 Mio. Jahren,vor 5 Mio. Jahren,-#000000,-J000000,-5000000,-4999999-01-01/-4999999-12-31
-vor ## Mio. Jahren,vor JJ Mio. Jahren,vor 50 Mio. Jahren,vor 50 Mio. Jahren,-##000000,-JJ000000,-50000000,-49999999-01-01/-49999999-12-31
-vor ### Mio. Jahren,vor JJJ Mio. Jahren,vor 500 Mio. Jahren,vor 500 Mio. Jahren,-###000000,-JJJ000000,-500000000,-499999999-01-01/-499999999-12-31
-vor #### Mio. Jahren,vor JJJJ Mio. Jahren,vor 1000 Mio. Jahren,vor 1000 Mio. Jahren,-####000000,-JJJJ000000,-1000000000,-999999999-01-01/-999999999-12-31
-in # Mio. Jahren,in J Mio. Jahren,in 5 Mio. Jahren,in 5 Mio. Jahren,"#000000",J000000,5000000,+5000000-01-01/+5000000-12-31
-in ## Mio. Jahren,in JJ Mio. Jahren,in 50 Mio. Jahren,in 50 Mio. Jahren,"##000000",JJ000000,50000000,+50000000-01-01/+50000000-12-31
-in ### Mio. Jahren,in JJJ Mio. Jahren,in 250 Mio. Jahren,in 250 Mio. Jahren,"###000000",JJJ000000,250000000,+250000000-01-01/+250000000-12-31
-in #### Mio. Jahren,in JJJJ Mio. Jahren,in 1000 Mio. Jahren,in 1000 Mio. Jahren,"####000000",JJJJ000000,1000000000,
-vor # Mrd. Jahren,vor J Mrd. Jahren,vor 1 Mrd. Jahren,vor 1 Mrd. Jahren,-#000000000,-J000000000,-1000000000,-999999999-01-01/-999999999-12-31
-vor ## Mrd. Jahren,vor JJ Mrd. Jahren,vor 12 Mrd. Jahren,vor 12 Mrd. Jahren,-##000000000,-JJ000000000,-12000000000,
-vor ### Mrd. Jahren,vor JJJ Mrd. Jahren,vor 123 Mrd. Jahren,vor 123 Mrd. Jahren,-###000000000,-JJJ000000000,-123000000000,
-vor #### Mrd. Jahren,vor JJJJ Mrd. Jahren,vor 1234 Mrd. Jahren,vor 1234 Mrd. Jahren,-####000000000,-JJJJ000000000,-1234000000000,
-in # Mrd. Jahren,in J Mrd. Jahren,in 1 Mrd. Jahren,in 1 Mrd. Jahren,"#000000000",J000000000,1000000000,
-in ## Mrd. Jahren,in JJ Mrd. Jahren,in 12 Mrd. Jahren,in 12 Mrd. Jahren,"##000000000",JJ000000000,12000000000,
-in ### Mrd. Jahren,in JJJ Mrd. Jahren,in 123 Mrd. Jahren,in 123 Mrd. Jahren,"###000000000",JJJ000000000,123000000000,
-in #### Mrd. Jahren,in JJJJ Mrd. Jahren,in 1234 Mrd. Jahren,in 1234 Mrd. Jahren,"####000000000",JJJJ000000000,1234000000000,
-vor # Billionen Jahren,vor J Billionen Jahren,vor 1 Billionen Jahren,vor 1 Billionen Jahren,-#000000000000,-J000000000000,-1000000000000,
-vor ## Billionen Jahren,vor JJ Billionen Jahren,vor 12 Billionen Jahren,vor 12 Billionen Jahren,-##000000000000,-JJ000000000000,-12000000000000,
-vor ### Billionen Jahren,vor JJJ Billionen Jahren,vor 123 Billionen Jahren,vor 123 Billionen Jahren,-###000000000000,-JJJ000000000000,-123000000000000,
-vor #### Billionen Jahren,vor JJJJ Billionen Jahren,vor 1234 Billionen Jahren,vor 1234 Billionen Jahren,-####000000000000,-JJJJ000000000000,-1234000000000000,
-in # Billionen Jahren,in J Billionen Jahren,in 1 Billionen Jahren,in 1 Billionen Jahren,"#000000000000",J000000000000,1000000000000,
-in ## Billionen Jahren,in JJ Billionen Jahren,in 12 Billionen Jahren,in 12 Billionen Jahren,"##000000000000",JJ000000000000,12000000000000,
-in ### Billionen Jahren,in JJJ Billionen Jahren,in 123 Billionen Jahren,in 123 Billionen Jahren,"###000000000000",JJJ000000000000,123000000000000,
-in #### Billionen Jahren,in JJJJ Billionen Jahren,in 1234 Billionen Jahren,in 1234 Billionen Jahren,"####000000000000",JJJJ000000000000,1234000000000000,
-"###0er Jahre",JJJ0er Jahre,1970er Jahre,1970er Jahre,"###0/###9",JJJ0/JJJ9,1970/1979,1970-01-01/1979-12-31
-"##.####",MM.JJJJ,12.1948,12.1948,"####-##",JJJJ-MM,1948-12,1948-01-01/1948-12-31
-"#### – ####",JJJJ – ZZZZ,1946 – 1950,1946 – 1950,"####/####",JJJJ/ZZZZ,1946/1950,1946-01-01/1950-12-31
-MM – MM ####,MM – YY JJJJ,März – Dez. 1949,MM – MM 1949,"####-##/####-##",JJJJ-MM/JJJJ-YY,1949-03/1949-12,1949-03-01/1949-12-31
-MM #### – MM ####,MM JJJJ – YY ZZZZ,Sept. 1946 – Jan. 1947,MM 1946 – MM 1947,"####-##/####-##",JJJJ-MM/ZZZZ-YY,1946-09/1947-01,1946-09-01/1947-01-31
-"##. – ##. MM ####",TT. – XX. MM JJJJ,16. – 17. März 1949,16. – 17. MM 1949,"####-##-##/####-##-##",JJJJ-MM-TT/JJJJ-MM-XX,1949-03-16/1949-03-17,1949-03-16/1949-03-17
-"##-##-####",TT-MM-JJJJ,01-01-1900,01-01-1900,"####-##-##",JJJJ-MM-TT,1900-01-01,1900-01-01
-"####,####,####","JJJJ,XXXX,ZZZZ","1894,1895,1896","1894,1895,1896","####/####",JJJJ/ZZZZ,1894/1896,1894-01-01/1896-12-31
-"####,MM-####,MM","JJJJ,MM-ZZZZ,YY","2006,Juni-2010,Nov","2006,MM-2010,MM","####-##/####-##",JJJJ-MM/ZZZZ-YY,2006-06/2010-11,2006-06-01/2010-11-30
-"#### – ####, ####","JJJJ – XXXX, ZZZZ","1947 – 1948, 1949","1947 – 1948, 1949","####/####",JJJJ/ZZZZ,1947/1949,1947-01-01/1949-12-31
-"####, #### – ####","JJJJ, XXXX – ZZZZ","1945, 1947 – 1949","1945, 1947 – 1949","####/####",JJJJ/ZZZZ,1945/1949,1945-01-01/1949-12-31
-"-####,##(MM)","-JJJJ,TT(MM)","-2011,01(März)","-2011,01(MM)",-####-##-##,-JJJJ-MM-TT,-2011-03-01,-2010-03-01/-2010-03-01
-"-####,MM","-JJJJ,MM","-2010,Nov","-2010,MM",-####-##,-JJJJ-MM,-2010-11,-2009-11-01/-2009-11-30
+id,inputMask,inputPattern,outputMask,outputPattern
+R1,#### ?,JJJJ ?,um ####,um JJJJ
+R2,####-####/####,JJJJ-ZZZZ/YYYY,"####/####,####","JJJJ/ZZZZ,YYYY"
+R3,####/###,JJJJ/ZZZ,####/####,JJJJ/JZZZ
+R4,####/#### + ####,JJJJ/ZZZZ + YYYY,"####/####,####","JJJJ/ZZZZ,YYYY"
+R5,###?,JJJ?,###0/###9,JJJ0/JJJ9
+R6,##??,JJ??,##00/##99,JJ00/JJ99
+R7,- ####/####,- JJJJ/ZZZZ,bis ####,bis ZZZZ
+R8,#,J,000#,000J
+R9,-#,-J,-000#,-000J
+R10,##,JJ,00##,00JJ
+R11,-##,-JJ,-00##,-00JJ
+R12,## A (####),NN A (JJJJ),####,JJJJ
+R13,## A (####.##.##),## A (JJJJ.MM.TT),####-##-##,JJJJ-MM-TT
+R14,###,JJJ,0###,0JJJ
+R15,-###,-JJJ,-0###,-0JJJ
+R16,### MM,JJJ MM,0###-##,0JJJ-MM
+R17,### MM #,JJJ MM T,0###-##-0#,0JJJ-MM-0T
+R18,### MM # - ### MM ##,JJJ MM T - ZZZ YY XX,0###-##-0#/0###-##-##,0JJJ-MM-0T/0ZZZ-YY-XX
+R19,### MM ##,JJJ MM TT,0###-##-##,0JJJ-MM-TT
+R20,### MM [vor ##],JJJ MM [vor TT],vor 0###-##-##,vor 0JJJ-MM-TT
+R21,####-,JJJJ-,ab ####,ab JJJJ
+R22,#### -,JJJJ -,ab ####,ab JJJJ
+R23,#### - #,JJJJ - N,####,JJJJ
+R24,#### - ##,JJJJ - ZZ,####,JJJJ
+R25,#### - ## - ##,JJJJ - ZZ - VV,####,JJJJ
+R26,#### - ####,JJJJ - ZZZZ,####/####,JJJJ/ZZZZ
+R27,#### ? ####,JJJJ ? ZZZZ,####/####,JJJJ/ZZZZ
+R28,"#### ? ####, ####","JJJJ ? ZZZZ, XXXX",####/####,JJJJ/XXXX
+R29,#### - ##. ####,JJJJ - NN. ZZZZ,####/####,JJJJ/ZZZZ
+R30,#### ####,JJJJ ZZZZ,####,JJJJ
+R31,#### (####),JJJJ (ZZZZ),####,JJJJ
+R32,#### (####/##) Aufnahme,JJJJ (ZZZZ/YY) Aufnahme,####/####,ZZZZ/ZZYY
+R33,#### (####/##) Erstausgabe,JJJJ (ZZZZ/YY) Erstausgabe,####/####,ZZZZ/ZZYY
+R34,#### (####/##) Erstdruck,JJJJ (ZZZZ/YY) Erstdruck,####/####,ZZZZ/ZZYY
+R35,#### (####a),JJJJ (ZZZZa),####,JJJJ
+R36,#### (####c),JJJJ (ZZZZc),####,JJJJ
+R37,#### (##.#.####),ZZZZ (TT.M.JJJJ),####-0#-##,JJJJ-0M-TT
+R38,#### (?),JJJJ (?),um ####,um JJJJ
+R39,#### (ca.),JJJJ (ca.),um ####,um JJJJ
+R40,#### (nach),JJJJ (nach),nach ####,nach JJJJ
+R41,#### (Nachtr. ####),JJJJ (Nachtr. ZZZZ),####,JJJJ
+R42,#### (Nachtrag ####/##),JJJJ (Nachtrag ZZZZ/XX),####,JJJJ
+R43,#### (Original),JJJJ (Original),####,JJJJ
+R44,#### (um),JJJJ (um),um ####,um JJJJ
+R45,#### (vor),JJJJ (vor),vor ####,vor JJJJ
+R46,#### / #### (?),JJJJ / ZZZZ (?),"um ####/####","um JJJJ/ZZZZ"
+R47,#### [### H],JJJJ [ZZZ H],####,JJJJ
+R48,#### [####],ZZZZ [JJJJ],####,JJJJ
+R49,#### [erschienen ####],JJJJ [erschienen ZZZZ],####,JJJJ
+R50,#### [erschienen ca. ####],JJJJ [erschienen ca. ZZZZ],####,JJJJ
+R51,#### [erschienen] ####,JJJJ [erschienen] ZZZZ,####,JJJJ
+R52,#### [i. e. ####],ZZZZ [i. e. JJJJ],####,JJJJ
+R53,#### [i.e. ####],JJJJ [i.e. ZZZZ],####,ZZZZ
+R54,#### [nach ##.##.],JJJJ [nach MM.TT.],nach ####-##-##,nach JJJJ-MM-TT
+R55,#### [nicht nach ##.##.],JJJJ [nicht nach MM.TT.],vor ####-##-##,vor JJJJ-MM-TT
+R56,#### = ### [jüd. Zeit],JJJJ = ZZZ [jüd. Zeit],####,JJJJ
+R57,#### = ####,JJJJ = ZZZZ,####,JJJJ
+R58,#### = #### [jüd. Zeit],JJJJ = ZZZZ [jüd. Zeit],####,JJJJ
+R59,#### = #### h.,JJJJ = ZZZZ h.,####,JJJJ
+R60,#### = IV [Franz. Revolution],JJJJ = IV [Franz. Revolution],####,JJJJ
+R61,#### = X [Franz. Revolution],JJJJ = X [Franz. Revolution],####,JJJJ
+R62,#### ca.,JJJJ ca.,um ####,um JJJJ
+R63,#### ff.,JJJJ ff.,nach ####,nach JJJJ
+R64,#### MM,JJJJ MM,####-##,JJJJ-MM
+R65,#### MM #,JJJJ MM T,####-##-0#,JJJJ-MM-0T
+R66,#### MM # / #### MM ##,JJJJ MM T / ZZZZ YY XX,"####-##-0#,####-##-##","JJJJ-MM-0T,ZZZZ-YY-XX"
+R67,#### MM ##,JJJJ MM TT,####-##-##,JJJJ-MM-TT
+R68,#### MM ## / ##,JJJJ MM TT / ZZ,"####-##-##,####-##-##","JJJJ-MM-TT,JJJJ-MM-ZZ"
+R69,#### nachgewiesen,JJJJ nachgewiesen,####,JJJJ
+R70,#### u. ff.,JJJJ u. ff.,nach ####,nach JJJJ
+R71,#### u.####,JJJJ u.ZZZZ,"####,####","JJJJ,ZZZZ"
+R72,####-##,JJJJ-ZZ,####,JJJJ
+R73,####-##-##,JJJJ-MM-TT,####-##-##,JJJJ-MM-TT
+R74,####-#### (####-####),JJJJ-ZZZZ (NNNN-OOOO),####/####,JJJJ/ZZZZ
+R75,####-#### (##.me),JJJJ-ZZZZ (NN.me),####/####,JJJJ/ZZZZ
+R76,####-##-##/####-##-##,JJJJ-MM-TT/ZZZZ-YY-XX,####-##-##/####-##-##,JJJJ-MM-TT/ZZZZ-YY-XX
+R77,####-##-##T##:##:##+##:##,JJJJ-MM-TTTHH:NN:SS+OO:PP,####-##-##,JJJJ-MM-TT
+R78,####-##-00,JJJJ-MM-00,####-##,JJJJ-MM
+R79,####(####) -,JJJJ(ZZZZ) -,ab ####,ab JJJJ
+R80,####(####) - ####(####),JJJJ(ZZZZ) - XXXX(YYYY),####/####,JJJJ/XXXX
+R81,####),JJJJ),####,JJJJ
+R82,"####, ####","JJJJ, ZZZZ","####,####","JJJJ,ZZZZ"
+R83,"####, #### ? ####","JJJJ, ZZZZ ? XXXX",####/####,JJJJ/XXXX
+R84,"####, ####, ####","JJJJ, ZZZZ, XXXX","####,####,####","JJJJ,ZZZZ,XXXX"
+R85,"####, ####, ####, ####","JJJJ, XXXX, YYYY, ZZZZ","####,####,####,####","JJJJ,XXXX,YYYY,ZZZZ"
+R86,"####, ####, ####, ####, ####","JJJJ, XXXX, YYYY, ZZZZ, TTTT","####,####,####,####,####","JJJJ,XXXX,YYYY,ZZZZ,TTTT"
+R87,"####, ##.","JJJJ, MM.",####-##,JJJJ-MM
+R88,"####, ##. ##","JJJJ, MM. TT",####-##-##,JJJJ-MM-TT
+R89,"####, ##. MM","JJJJ, TT. MM",####-##-##,JJJJ-MM-TT
+R90,"####, #. MM","JJJJ, T. MM",####-##-0#,JJJJ-MM-0T
+R91,"####, (####)","JJJJ, (ZZZZ)",####,JJJJ
+R92,"####, [####?]","JJJJ, [ZZZZ?]",vermutlich ####,vermutlich JJJJ
+R93,"####, [####]","JJJJ, [ZZZZ]",####,JJJJ
+R94,"####, [ca. ####]","JJJJ, [ca. ZZZZ]",um ####,um JJJJ
+R95,"####, c ####","JJJJ, c ZZZZ",####,JJJJ
+R96,"####, MM","JJJJ, MM",####-##,JJJJ-MM
+R97,"####, MM-####, MM","JJJJ, MM-ZZZZ, YY",####-##/####-##,JJJJ-MM/ZZZZ-YY
+R98,"####,# -","JJJJ,N -",ab ####,ab JJJJ
+R99,####. ##,JJJJ. NN,####,JJJJ
+R100,####. ####,JJJJ. ZZZZ,####,JJJJ
+R101,####. ##. ##,JJJJ. MM. TT,####-##-##,JJJJ-MM-TT
+R102,####.##,JJJJ.NN,####,JJJJ
+R103,####.##-##,JJJJ.NN-OO,####,JJJJ
+R104,####.##.,JJJJ.NN.,####,JJJJ
+R105,####.##.##,JJJJ.MM.TT,####-##-##,JJJJ-MM-TT
+R106,####.##.##.,JJJJ.MM.TT.,####-##-##,JJJJ-MM-TT
+R107,####.##.##.- ####.##.##.,JJJJ.MM.TT.- ZZZZ.YY.XX.,####-##-##/####-##-##,JJJJ-MM-TT/ZZZZ-YY-XX
+R108,####/##,JJJJ/ZZ,"####,####","JJJJ,JJZZ"
+R109,-####/##,-JJJJ/ZZ,bis ####,bis JJZZ
+R110,####/## = IX [Franz. Revolution],JJJJ/ZZ = IX [Franz. Revolution],####/####,JJJJ/JJZZ
+R111,####/## = VI [Franz. Revolution],JJJJ/ZZ = VI [Franz. Revolution],####/####,JJJJ/JJZZ
+R112,####/## = VII [Franz. Revolution],JJJJ/ZZ = VII [Franz. Revolution],####/####,JJJJ/JJZZ
+R113,####/## = X [Franz. Revolution],JJJJ/ZZ = X [Franz. Revolution],####/####,JJJJ/JJZZ
+R114,####/#### vermutlich,JJJJ/ZZZZ vermutlich,####/####,JJJJ/ZZZZ
+R115,####/#### (Nachtrag ####),JJJJ/ZZZZ (Nachtrag XXXX),"####,####","JJJJ,ZZZZ"
+R116,####/#### (um),JJJJ/ZZZZ (um),um ####/um ####,um JJJJ/um ZZZZ
+R117,####/#### = VIII [Franz. Revolution],JJJJ/ZZZZ = VIII [Franz. Revolution],####/####,JJJJ/ZZZZ
+R118,####/##(####) -,JJJJ/XX(ZZZZ) -,ab ####,ab JJJJ
+R119,####/##.##.##,JJJJ/ZZ.MM.TT,####-01-01/####-##-##,JJJJ-01-01/JJZZ-MM-TT
+R120,####/##/##,JJJJ/MM/TT,####-##-##,JJJJ-MM-TT
+R121,####/[####],JJJJ/[ZZZZ],####,JJJJ
+R122,####?,JJJJ?,um ####,um JJJJ
+R123,####= ### [jüd. Zeit],JJJJ= ZZZ [jüd. Zeit],####,JJJJ
+R124,####-00-00,JJJJ-00-00,####,JJJJ
+R125,"##,####","NN,JJJJ",####,JJJJ
+R126,##. - ##. Jh.,JJ. - ZZ. Jh.,##. Jahrhundert/##. Jahrhundert,JJ. Jahrhundert/ZZ. Jahrhundert
+R127,##. ? ##. MM ####,TT. ? XX. MM JJJJ,####-##-##/####-##-##,JJJJ-MM-TT/JJJJ-MM-XX
+R128,##. ####,NN. JJJJ,####,JJJJ
+R129,##. Jh.,JJ. Jh.,##. Jahrhundert,JJ. Jahrhundert
+R130,##. Jh. (Anf.),JJ. Jh. (Anf.),Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert
+R131,##. MM ####,TT. MM JJJJ,####-##-##,JJJJ-MM-TT
+R132,##. und ##. Jahrh.,JJ. und ZZ. Jahrh.,"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert"
+R133,##. und ##. Jh.,JJ. und ZZ. Jh.,"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert"
+R134,##.####,NN.JJJJ,####,JJJJ
+R135,##.#### -,NN.JJJJ -,ab ####,ab JJJJ
+R136,##.#### - ##.####; lückenhaft,NN.JJJJ - OO.ZZZZ; lückenhaft,####/####,JJJJ/ZZZZ
+R137,##.-##. Jh.,JJ.-ZZ. Jh.,##. Jahrhundert/##. Jahrhundert,JJ. Jahrhundert/ZZ. Jahrhundert
+R138,##.##.##,TT.MM.JJ,19##-##-##,19JJ-MM-TT
+R139,##.##.####,TT.MM.JJJJ,####-##-##,JJJJ-MM-TT
+R140,##.-##.#. ####,TT.-XX.M. JJJJ,####-0#-##/####-0#-##,JJJJ-0M-TT/JJJJ-0M-XX
+R141,##.##.0#,TT.MM.0J,200#-##-##,200J-MM-TT
+R142,##.#.####,TT.M.JJJJ,####-0#-##,JJJJ-0M-TT
+R143,##./##. Jh.,JJ./ZZ. Jh.,##. Jahrhundert/##. Jahrhundert,JJ. Jahrhundert/ZZ. Jahrhundert
+R144,##/##/####,MM/TT/JJJJ,####-##-##,JJJJ-MM-TT
+R145,##/#/####,MM/T/JJJJ,####-##-0#,JJJJ-MM-0T
+R146,##uu,JJuu,##00/##99,JJ00/JJ99
+R147,##XX,JJXX,nach ##00,nach JJ00
+R148,"#,####","M,JJJJ",####-0#,JJJJ-0M
+R149,#. Drittel #. Jh.,Z. Drittel J. Jh.,#. Drittel #. Jahrhundert,Z. Drittel J. Jahrhundert
+R150,#. Hälfte ##. Jh.,Z. Hälfte JJ. Jh.,#. Hälfte ##. Jahrhundert,Z. Hälfte JJ. Jahrhundert
+R151,#. Jh.,J. Jh.,#. Jahrhundert,J. Jahrhundert
+R152,#. MM ####,T. MM JJJJ,####-##-0#,JJJJ-MM-0T
+R153,#. Viertel ##. Jh.,Z. Viertel JJ. Jh.,#. Viertel ##. Jahrhundert,Z. Viertel JJ. Jahrhundert
+R154,#. Viertel #. Jh.,Z. Viertel J. Jh.,#. Viertel #. Jahrhundert,Z. Viertel J. Jahrhundert
+R155,#.####,N.JJJJ,####,JJJJ
+R156,#.#### -,N.JJJJ -,ab ####,ab JJJJ
+R157,#.#### - ##.####,N.JJJJ - OO.ZZZZ,####/####,JJJJ/ZZZZ
+R158,#.#### - #.####,N.JJJJ - O.ZZZZ,####/####,JJJJ/ZZZZ
+R159,#.##.####,T.MM.JJJJ,####-##-0#,JJJJ-MM-0T
+R160,#.#.####,T.M.JJJJ,####-0#-0#,JJJJ-0M-0T
+R161,#/##/####,M/TT/JJJJ,####-0#-##,JJJJ-0M-TT
+R162,#/#/####,M/T/JJJJ,####-0#-0#,JJJJ-0M-0T
+R163,(#### - ####),(JJJJ - ZZZZ),####/####,JJJJ/ZZZZ
+R164,(#### -) ####,(JJJJ -) ZZZZ,####/####,JJJJ/ZZZZ
+R165,(####),(JJJJ),####,JJJJ
+R166,(####) ####,(JJJJ) ZZZZ,####,ZZZZ
+R167,(####) = XI [Franz. Revolution],(JJJJ) = XI [Franz. Revolution],####,JJJJ
+R168,(####.##.##),(JJJJ.MM.TT),####-##-##,JJJJ-MM-TT
+R169,(####.##.##.),(JJJJ.MM.TT.),####-##-##,JJJJ-MM-TT
+R170,(####/####) = VIII [Franz. Revolution],(JJJJ/ZZZZ) = VIII [Franz. Revolution],####/####,JJJJ/ZZZZ
+R171,(####/##) = IX [Franz. Revolution],(JJJJ/ZZ) = IX [Franz. Revolution],####/####,JJJJ/JJZZ
+R172,(####/##) = VII [Franz. Revolution],(JJJJ/ZZ) = VII [Franz. Revolution],####/####,JJJJ/JJZZ
+R173,([####-####],([JJJJ-ZZZZ],####/####,JJJJ/ZZZZ
+R174,(c. ####),(c. JJJJ),um ####,um JJJJ
+R175,(ca. ####),(ca. JJJJ),um ####,um JJJJ
+R176,[### MM #],[JJJ MM T],0###-##-0#,0JJJ-MM-0T
+R177,[#### - ####],[JJJJ - ZZZZ],####/####,JJJJ/ZZZZ
+R178,[#### ?],[JJJJ ?],um ####,um JJJJ
+R179,[#### Jh.],[JJZZ Jh.],##. Jahrhundert,JJ. Jahrhundert
+R180,[#### MM #],[JJJJ MM T],####-##-0#,JJJJ-MM-0T
+R181,[####-####],[JJJJ-ZZZZ],####/####,JJJJ/ZZZZ
+R182,[####-####],[JJJJ-ZZZZ],####/####,JJJJ/ZZZZ
+R183,[####/##],[JJJJ/ZZ],"####,####","JJJJ,JJZZ"
+R184,[####?],[JJJJ?],vermutlich ####,vermutlich JJJJ
+R185,[####],[JJJJ],####,JJJJ
+R186,[####] = ####,[JJJJ] = ZZZZ,####,JJJJ
+R187,[####] = #### [h.],[JJJJ] = ZZZZ [h.],####,JJJJ
+R188,[####] = #### h.,[JJJJ] = ZZZZ h.,####,JJJJ
+R189,[###] MM ##,[JJJ] MM TT,0###-##-##,0JJJ-MM-TT
+R190,[##. - ##. Jh.],[JJ. - ZZ. Jh.],##. Jahrhundert/##. Jahrhundert,JJ. Jahrhundert/ZZ. Jahrhundert
+R191,[##. Jahrh.],[JJ. Jahrh.],##. Jahrhundert,JJ. Jahrhundert
+R192,[##. Jh. Anfang],[JJ. Jh. Anfang],Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert
+R193,[##. Jh.],[JJ. Jh.],##. Jahrhundert,JJ. Jahrhundert
+R194,[##. und ##. Jh.],[JJ. und ZZ. Jh.],"##. Jahrhundert,##. Jahrhundert","JJ. Jahrhundert,ZZ. Jahrhundert"
+R195,[##]##,[JJ]ZZ,####,JJZZ
+R196,[##]##.##.##.,[JJ]ZZ.MM.TT.,####-##-##,JJZZ-MM-TT
+R197,[#. Drittel ##. Jh.],[Z. Drittel JJ. Jh.],#. Drittel ##. Jahrhundert,Z. Drittel JJ. Jahrhundert
+R198,[#. Drittel des ##. Jh.],[Z. Drittel des JJ. Jh.],#. Drittel ##. Jahrhundert,Z. Drittel JJ. Jahrhundert
+R199,[#. Drittel des #. Jh.],[Z. Drittel des J. Jh.],#. Drittel #. Jahrhundert,Z. Drittel J. Jahrhundert
+R200,[#. Hälfte ##. Jahrh.],[Z. Hälfte JJ. Jahrh.],#. Hälfte ##. Jahrhundert,Z. Hälfte JJ. Jahrhundert
+R201,[#. Hälfte ##. Jh.],[Z. Hälfte JJ. Jh.],#. Hälfte ##. Jahrhundert,Z. Hälfte JJ. Jahrhundert
+R202,[#. Hälfte des ##. Jh.],[Z. Hälfte des JJ. Jh.],#. Hälfte ##. Jahrhundert,Z. Hälfte JJ. Jahrhundert
+R203,[#. Jh.],[J. Jh.],#. Jahrhundert,J. Jahrhundert
+R204,[#. Quartal ##. Jh.],[Z. Quartal JJ. Jh.],#. Viertel ##. Jahrhundert,Z. Viertel JJ. Jahrhundert
+R205,[#. Quartal ##. Jh.],[Z. Quartal JJ. Jh.],#. Viertel ##. Jahrhundert,Z. Viertel JJ. Jahrhundert
+R206,[(####)],[(JJJJ)],####,JJJJ
+R207,[Anfang ##. Jh.],[Anfang JJ. Jh.],Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert
+R208,[Anno ####],[Anno JJJJ],####,JJJJ
+R209,[c ####],[c JJJJ],####,JJJJ
+R210,[c. ####],[c. JJJJ],um ####,um JJJJ
+R211,[ca. #### - ####],[ca. JJJJ - ZZZZ],um ####/####,um JJJJ/ZZZZ
+R212,[ca. ####-####],[ca. JJJJ-ZZZZ],um ####/um ####,um JJJJ/um ZZZZ
+R213,[ca. ####-##],[ca. JJJJ-ZZ],um ####/um ####,um JJJJ/um JJZZ
+R214,[ca. ####/####],[ca. JJJJ/ZZZZ],um ####/um ####,um JJJJ/um ZZZZ
+R215,[ca. ####/##],[ca. JJJJ/ZZ],um ####/um ####,um JJJJ/um JJZZ
+R216,[ca. ####?],[ca. JJJJ?],um ####,um JJJJ
+R217,[ca. ####],[ca. JJJJ],um ####,um JJJJ
+R218,[ca.####],[ca.JJJJ],um ####,um JJJJ
+R219,[circa ####],[circa JJJJ],um ####,um JJJJ
+R220,[ersch. ####],[ersch. JJJJ],####,JJJJ
+R221,[i.e. ####?],[i.e. JJJJ?],vermutlich ####,vermutlich JJJJ
+R222,[i.e.####],[i.e.JJJJ],####,JJJJ
+R223,[MM ####],[MM JJJJ],####-##,JJJJ-MM
+R224,[nach ####.##.##.],[nach JJJJ.MM.TT.],nach ####-##-##,nach JJJJ-MM-TT
+R225,[nach ####.##.##],[nach JJJJ.MM.TT],nach ####-##-##,nach JJJJ-MM-TT
+R226,[nach ####?],[nach JJJJ?],nach ####,nach JJJJ
+R227,[nach ####],[nach JJJJ],nach ####,nach JJJJ
+R228,[nach ##. MM ####],[nach TT. MM JJJJ],nach ####-##-##,nach JJJJ-MM-TT
+R229,[nach #. MM ####],[nach T. MM JJJJ],nach ####-##-0#,nach JJJJ-MM-0T
+R230,[nicht nach ####.##.##.],[nicht nach JJJJ.MM.TT.],vor ####-##-##,vor JJJJ-MM-TT
+R231,[nicht nach ####],[nicht nach JJJJ],vor ####,vor JJJJ
+R232,[nicht vor ####.##.##.],[nicht vor JJJJ.MM.TT.],nach ####-##-##,nach JJJJ-MM-TT
+R233,[nicht vor ####.##.##],[nicht vor JJJJ.MM.TT],nach ####-##-##,nach JJJJ-MM-TT
+R234,[nicht vor ####.##.],[nicht vor JJJJ.MM.],nach ####-##,nach JJJJ-MM
+R235,[nicht vor ####],[nicht vor JJJJ],nach ####,nach JJJJ
+R236,[um #### - ####],[um JJJJ - ZZZZ],um ####/####,um JJJJ/ZZZZ
+R237,[um #### - um ####],[um JJJJ - um ZZZZ],um ####/####,um JJJJ/ZZZZ
+R238,[um ####/##],[um JJJJ/ZZ],"um ####,um ####","um JJJJ,um JJZZ"
+R239,[um ####?],[um JJJJ?],vermutlich ####,vermutlich JJJJ
+R240,[um ####],[um JJJJ],um ####,um JJJJ
+R241,[um ####],[um JJJJ],um ####,um JJJJ
+R242,[vor ####.##.##.],[vor JJJJ.MM.TT.],vor ####-##-##,vor JJJJ-MM-TT
+R243,[vor ####],[vor JJJJ],vor ####,vor JJJJ
+R244,an VII [i.e.####/##],an VII [i.e.JJJJ/ZZ],"####,####","JJJJ,JJZZ"
+R245,Anfang ##. Jh.,Anfang JJ. Jh.,Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert
+R246,Anfang #. Jh.,Anfang J. Jh.,Anfang #. Jahrhundert,Anfang J. Jahrhundert
+R247,c ####,c JJJJ,um ####,um JJJJ
+R248,c. ####,c. JJJJ,um ####,um JJJJ
+R249,circa ####,circa JJJJ,um ####,um JJJJ
+R250,Ende ##. Jh.,Ende JJ. Jh.,Ende ##. Jahrhundert,Ende JJ. Jahrhundert
+R251,Ende ##. Jh./Anfang ##. Jh.,Ende JJ. Jh./Anfang ZZ. Jh.,"Ende ##. Jahrhundert,Anfang ##. Jahrhundert","Ende JJ. Jahrhundert,Anfang ZZ. Jahrhundert"
+R252,frühes ##. Jahrhundert,frühes JJ. Jahrhundert,Anfang ##. Jahrhundert,Anfang JJ. Jahrhundert
+R253,Geistesgeschichte ####-####,Geistesgeschichte JJJJ-ZZZZ,####/####,JJJJ/ZZZZ
+R254,Geschichte ### v. Chr.-###,Geschichte JJJ v. Chr.-ZZZ,-0###/0###,-0JJJ/0ZZZ
+R255,Geschichte ### v. Chr.-### v. Chr.,Geschichte JJJ v. Chr.-ZZZ v. Chr.,-0###/-0###,-0JJJ/-0ZZZ
+R256,Geschichte ####,Geschichte JJJJ,####,JJJJ
+R257,Geschichte ####,Geschichte JJJJ,####,JJJJ
+R258,Geschichte ####-,Geschichte JJJJ-,ab ####,ab JJJJ
+R259,Geschichte -####,Geschichte -JJJJ,bis ####,bis JJJJ
+R260,Geschichte #### - ####,Geschichte JJJJ - ZZZZ,####/####,JJJJ/ZZZZ
+R261,Geschichte #### v.Chr.-####,Geschichte JJJJ v.Chr.-ZZZZ,-####/####,-JJJJ/ZZZZ
+R262,Geschichte ###-###,Geschichte JJJ-ZZZ,0###/0###,0JJJ/0ZZZ
+R263,Geschichte ###-####,Geschichte JJJ-ZZZZ,0###/####,0JJJ/ZZZZ
+R264,Geschichte ####-####,Geschichte JJJJ-ZZZZ,####/####,JJJJ/ZZZZ
+R265,Geschichte Anfänge-####,Geschichte Anfänge-JJJJ,bis ####,bis JJJJ
+R266,Geschichte Anfänge-####,Geschichte Anfänge-JJJJ,bis ####,bis JJJJ
+R267,"GG, ##. MM ####","GG, TT. MM JJJJ",####-##-##,JJJJ-MM-TT
+R268,"GG, ##.##.####","GG, TT.MM.JJJJ",####-##-##,JJJJ-MM-TT
+R269,Karolingisch,Karolingisch,0750/0911,0750/0911
+R270,Klassizistisch,Klassizistisch,1770/1830,1770/1830
+R271,Mitte ##. Jh.,Mitte JJ. Jh.,Mitte ##. Jahrhundert,Mitte JJ. Jahrhundert
+R272,MM ? MM ####,MM ? YY JJJJ,####-##/####-##,JJJJ-MM/JJJJ-YY
+R273,MM ####,MM JJJJ,####-##,JJJJ-MM
+R274,MM #### ? MM ####,MM JJJJ ? YY ZZZZ,####-##/####-##,JJJJ-MM/ZZZZ-YY
+R275,Nachgewiesen #### -,Nachgewiesen JJJJ -,ab ####,ab JJJJ
+R276,Nachgewiesen ####(####) -,Nachgewiesen JJJJ(ZZZZ) -,ab ####,ab JJJJ
+R277,Nachgewiesen ##.#### -,Nachgewiesen NN.JJJJ -,ab ####,ab JJJJ
+R278,Nachgewiesen #.#### -,Nachgewiesen N.JJJJ -,ab ####,ab JJJJ
+R279,Nr. #.#### -,Nr. N.JJJJ -,ab ####,ab JJJJ
+R280,Ottonisch,Ottonisch,0936/1024,0936/1024
+R281,Römisch,Römisch,-500/395,-500/395
+R282,s.a. [####],s.a. [JJJJ],####,JJJJ
+R283,s.a. [ca. ####-####],s.a. [ca. JJJJ-ZZZZ],um ####/um ####,um JJJJ/um ZZZZ
+R284,s.a. [ca. ####],s.a. [ca. JJJJ],um ####,um JJJJ
+R285,s.a. [nach ####],s.a. [nach JJJJ],nach ####,nach JJJJ
+R286,s.a. [circa ####],s.a. [circa JJJJ],um ####,um JJJJ
+R287,s.a. [zwischen #### u. ####],s.a. [zwischen JJJJ u. ZZZZ],####/####,JJJJ/ZZZZ
+R288,Sozialgeschichte ####-####,Sozialgeschichte JJJJ-ZZZZ,####/####,JJJJ/ZZZZ
+R289,-SS ####,-SS JJJJ,####,JJJJ
+R290,um ###,um JJJ,um 0###,um 0JJJ
+R291,um #### - ####,um JJJJ - ZZZZ,um ####/um ####,um JJJJ/um ZZZZ
+R292,um ####-####,um JJJJ-ZZZZ,um ####/um ####,um JJJJ/um ZZZZ
+R293,um ####/##,um JJJJ/ZZ,um ####/um ####,um JJJJ/um JJZZ
+R294,um ####/####,um JJJJ/ZZZZ,um ####/um ####,um JJJJ/um ZZZZ
+R295,#.#### - ###.####[?],Q.JJJJ - NNN.ZZZZ[?],um ####/um ####,um JJJJ/um ZZZZ
+R296,#.#### - ####/##.####[?],W.JJJJ - NNNN/QQ.ZZZZ[?],um ####/um ####,um JJJJ/um ZZZZ
+R297,#.#### - ##.[####][?],N.JJJJ - QQ.[ZZZZ][?],um ####/um ####,um JJJJ/um ZZZZ
+R298,####-####,JJJJ-ZZZZ,####/####,JJJJ/ZZZZ
+R299,#.#### - ##.#### = Nr. #-###,P.JJJJ - NN.ZZZZ = Nr. Q-WWW,####/####,JJJJ/ZZZZ
+R300,Nachgewiesen #### - ####,Nachgewiesen JJJJ - ZZZZ,####/####,JJJJ/ZZZZ
+R301,# v. Chr.,J v. Chr.,-#,-J
+R302,## v. Chr.,JJ v. Chr.,-##,-JJ
+R303,### v. Chr.,JJJ v. Chr.,-###,-JJJ
+R304,#### v. Chr.,JJJJ v. Chr.,-####,-JJJJ
+R305,##### v. Chr.,JJJJJ v. Chr.,-#####,-JJJJJ
+R306,###### v. Chr.,JJJJJJ v. Chr.,-######,-JJJJJJ
+R307,####### v. Chr.,JJJJJJJ v. Chr.,-#######,-JJJJJJJ
+R308,######## v. Chr.,JJJJJJJJ v. Chr.,-########,-JJJJJJJJ
+R309,######### v. Chr.,JJJJJJJJJ v. Chr.,-#########,-JJJJJJJJJ
+R310,vor # Mio. Jahren,vor J Mio. Jahren,-#000000,-J000000
+R311,vor ## Mio. Jahren,vor JJ Mio. Jahren,-##000000,-JJ000000
+R312,vor ### Mio. Jahren,vor JJJ Mio. Jahren,-###000000,-JJJ000000
+R313,vor #### Mio. Jahren,vor JJJJ Mio. Jahren,-####000000,-JJJJ000000
+R314,in # Mio. Jahren,in J Mio. Jahren,#000000,J000000
+R315,in ## Mio. Jahren,in JJ Mio. Jahren,##000000,JJ000000
+R316,in ### Mio. Jahren,in JJJ Mio. Jahren,###000000,JJJ000000
+R317,in #### Mio. Jahren,in JJJJ Mio. Jahren,####000000,JJJJ000000
+R318,vor # Mrd. Jahren,vor J Mrd. Jahren,-#000000000,-J000000000
+R319,vor ## Mrd. Jahren,vor JJ Mrd. Jahren,-##000000000,-JJ000000000
+R320,vor ### Mrd. Jahren,vor JJJ Mrd. Jahren,-###000000000,-JJJ000000000
+R321,vor #### Mrd. Jahren,vor JJJJ Mrd. Jahren,-####000000000,-JJJJ000000000
+R322,in # Mrd. Jahren,in J Mrd. Jahren,#000000000,J000000000
+R323,in ## Mrd. Jahren,in JJ Mrd. Jahren,##000000000,JJ000000000
+R324,in ### Mrd. Jahren,in JJJ Mrd. Jahren,###000000000,JJJ000000000
+R325,in #### Mrd. Jahren,in JJJJ Mrd. Jahren,####000000000,JJJJ000000000
+R326,vor # Billionen Jahren,vor J Billionen Jahren,-#000000000000,-J000000000000
+R327,vor ## Billionen Jahren,vor JJ Billionen Jahren,-##000000000000,-JJ000000000000
+R328,vor ### Billionen Jahren,vor JJJ Billionen Jahren,-###000000000000,-JJJ000000000000
+R329,vor #### Billionen Jahren,vor JJJJ Billionen Jahren,-####000000000000,-JJJJ000000000000
+R330,in # Billionen Jahren,in J Billionen Jahren,#000000000000,J000000000000
+R331,in ## Billionen Jahren,in JJ Billionen Jahren,##000000000000,JJ000000000000
+R332,in ### Billionen Jahren,in JJJ Billionen Jahren,###000000000000,JJJ000000000000
+R333,in #### Billionen Jahren,in JJJJ Billionen Jahren,####000000000000,JJJJ000000000000
+R334,###0er Jahre,JJJ0er Jahre,###0/###9,JJJ0/JJJ9
+R335,##.####,MM.JJJJ,####-##,JJJJ-MM
+R336,#### – ####,JJJJ – ZZZZ,####/####,JJJJ/ZZZZ
+R337,MM – MM ####,MM – YY JJJJ,####-##/####-##,JJJJ-MM/JJJJ-YY
+R338,MM #### – MM ####,MM JJJJ – YY ZZZZ,####-##/####-##,JJJJ-MM/ZZZZ-YY
+R339,##. – ##. MM ####,TT. – XX. MM JJJJ,####-##-##/####-##-##,JJJJ-MM-TT/JJJJ-MM-XX
+R340,##-##-####,TT-MM-JJJJ,####-##-##,JJJJ-MM-TT
+R341,"####,####,####","JJJJ,XXXX,ZZZZ",####/####,JJJJ/ZZZZ
+R342,"####,MM-####,MM","JJJJ,MM-ZZZZ,YY",####-##/####-##,JJJJ-MM/ZZZZ-YY
+R343,"#### – ####, ####","JJJJ – XXXX, ZZZZ",####/####,JJJJ/ZZZZ
+R344,"####, #### – ####","JJJJ, XXXX – ZZZZ",####/####,JJJJ/ZZZZ
+R345,"-####,##(MM)","-JJJJ,TT(MM)",-####-##-##,-JJJJ-MM-TT
+R346,"-####,MM","-JJJJ,MM",-####-##,-JJJJ-MM

@@ -23,21 +23,27 @@ import java.util.List;
 
 /**
  * JSON-facing parse response for the embedded HTTP server.
+ *
+ * <p>The first six fields mirror the processing pipeline steps visible in
+ * {@code tests.csv}: {@code input} → {@code normalized} → {@code tokenized}
+ * → {@code output} + {@code timespan}. Technical details follow.</p>
  */
 public record HttpParseResponse(
         boolean successful,
+        // --- Processing pipeline steps ---
         String input,
+        String normalized,
+        String tokenized,
+        String output,
+        HttpTimeSpan timespan,
+        // --- Technical details ---
         IndexDaysMode indexDaysMode,
-        String normalizedInput,
         List<Rule> matchingRules,
         Rule matchedRule,
-        String transformedInput,
-        HttpTimeSpan timeSpan,
         List<FacetNotation> facetNotations,
         String facetString,
         Long startIndexDay,
         Long endIndexDay,
-        String output,
         String errorType,
         String errorMessage) {
 
@@ -45,17 +51,17 @@ public record HttpParseResponse(
         return new HttpParseResponse(
                 result.isSuccessful(),
                 result.getInput(),
-                result.getIndexDaysMode(),
                 result.getNormalizedInput(),
+                result.getTransformedInput(),
+                result.getOutput(),
+                HttpTimeSpan.from(result.getTimeSpan()),
+                result.getIndexDaysMode(),
                 result.getMatchingRules(),
                 result.getMatchedRule(),
-                result.getTransformedInput(),
-                HttpTimeSpan.from(result.getTimeSpan()),
                 result.getFacetNotations(),
                 result.getFacetString(),
                 result.getStartIndexDay(),
                 result.getEndIndexDay(),
-                result.getOutput(),
                 result.getErrorType(),
                 result.getErrorMessage());
     }

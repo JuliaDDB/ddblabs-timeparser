@@ -20,33 +20,24 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
-
+import java.util.Set;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-
 import lombok.extern.slf4j.Slf4j;
 
 /**
  * <p>
- * Reads facets from a file.
+ * Reads facets from a CSV file using named column headers.
  * </p>
  * <ul>
- * <li>The first line in the file is ignored and can be used as a header
- * line.</li>
- * <li>Each line must consist of seven CSV columns. The columns must correspond
- * to the following, in the specified order:
- * <ol>
- * <li>ID</li>
- * <li>Notation</li>
- * <li>Earliest date in years</li>
- * <li>Latest date in years</li>
- * <li>German description</li>
- * <li>English description</li>
- * <li>A sorting value to sort facets</li>
- * </ol>
- * </li>
+ * <li>The first line must be a header row with the following column names
+ * (order is irrelevant): {@code id}, {@code notation}, {@code earliestDate},
+ * {@code latestDate}, {@code prefLabelDe}, {@code prefLabelEn},
+ * {@code sortOrder}.</li>
+ * <li>The delimiter is {@code ;} and the quote character is {@code "}.</li>
  * </ul>
  */
 @Slf4j
@@ -76,17 +67,32 @@ public final class FacetReader {
                 throw new IOException("Facet file does could not be found for the given path \"" + path + "\"");
             }
             try (final CSVParser parser = CSVParser.parse(new InputStreamReader(in, charsetName), format)) {
+                for (final String required : new String[]{"id", "notation", "earliestDate", "latestDate",
+                        "prefLabelDe", "prefLabelEn", "sortOrder"}) {
+                    if (!parser.getHeaderMap().containsKey(required)) {
+                        throw new ParseException(
+                                "Required column \"" + required + "\" not found in facet file \"" + path + "\"", 0);
+                    }
+                }
+
+                final Set<String> seenIds = new HashSet<>();
                 for (final CSVRecord record : parser) {
                     final int lineNumber = Math.toIntExact(record.getRecordNumber());
-                    if (record.size() < 7) {
-                        final String errorMsg = "Expected 7 columns instead of " + record.size() + " in facet file \""
-                                + path + "\", line " + lineNumber + ": \"" + record + "\"";
-                        throw new ParseException(errorMsg, lineNumber);
+                    final String id = record.get("id");
+                    if (!seenIds.add(id)) {
+                        throw new ParseException(
+                                "Duplicate id \"" + id + "\" in facet file \"" + path + "\"",
+                                lineNumber);
                     }
-
                     try {
-                        facets.add(new Facet(record.get(0), record.get(1), Long.valueOf(record.get(2)),
-                                Long.valueOf(record.get(3)), record.get(4), record.get(5), record.get(6)));
+                        facets.add(new Facet(
+                                record.get("id"),
+                                record.get("notation"),
+                                Long.valueOf(record.get("earliestDate")),
+                                Long.valueOf(record.get("latestDate")),
+                                record.get("prefLabelDe"),
+                                record.get("prefLabelEn"),
+                                Integer.valueOf(record.get("sortOrder"))));
                     } catch (NumberFormatException exception) {
                         log.warn("Skipping facet row with invalid numeric value in facet file \"{}\", line {}: {} ({})",
                                 path,

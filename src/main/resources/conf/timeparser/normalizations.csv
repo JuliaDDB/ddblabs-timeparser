@@ -1,77 +1,276 @@
-from,to,type,comment
-(?i)\bv\.?\s*Chr\.?(?=\s|$),v. Chr.,normalization,normalize BCE abbreviation variants
-(?i)\bn\.?\s*Chr\.?(?=\s|$),n. Chr.,normalization,normalize CE abbreviation variants
-(?i)\bMio\.?(?=\s|$),Mio.,normalization,normalize million abbreviation variants
-(?i)\bMillion(?:en)?(?=\s|$),Mio.,normalization,normalize million word variants
-(?i)\bMrd\.?(?=\s|$),Mrd.,normalization,normalize milliard abbreviation variants
-(?i)\bMilliard(?:e|en)(?=\s|$),Mrd.,normalization,normalize milliard word variants
-(?i)\bBill\.?(?=\s|$),Billionen,normalization,normalize billion abbreviation variants
-(?i)\bBillion(?:en)?(?=\s|$),Billionen,normalization,normalize billion word variants
-(?i)\betwa\b,circa,normalization,normalize approx. marker 'etwa' to canonical form 'circa'; design: two canonical uncertainty markers in rules.csv: 'um' (~+-5y broad) and 'circa' (~+-2y moderate); cluster 'circa': etwa / wohl / vermutlich / wahrscheinlich / ungefaehr / vorwiegend -> circa; 'um' and 'ca.' keep their own distinct rule families
-(?i)\bwohl\b,circa,normalization,normalize uncertainty marker 'wohl' to canonical form 'circa' (e.g. 'wohl 1923' -> 'circa 1923')
-(?i)\bvermutlich\b,circa,normalization,normalize uncertainty marker 'vermutlich' to canonical form 'circa'
-(?i)\bvermutl\.,circa,normalization,normalize uncertainty marker 'vermutl.' to canonical form 'circa'
-(?i)\bwahrscheinlich\b,circa,normalization,normalize uncertainty marker 'wahrscheinlich' to canonical form 'circa'
-(?i)\bwahrscheinl\.,circa,normalization,normalize uncertainty marker 'wahrscheinl.' to canonical form 'circa'
-(?i)\bwahrsch\.,circa,normalization,normalize uncertainty marker 'wahrsch.' to canonical form 'circa'
-(?i)\bungefähr\b,circa,normalization,normalize uncertainty marker 'ungefähr' to canonical form 'circa'
-(?i)\bungef\.,circa,normalization,normalize uncertainty marker 'ungef.' to canonical form 'circa'
-(?i)\bvorwiegend\b,circa,normalization,normalize uncertainty marker 'vorwiegend' to canonical form 'circa'
-(?i)\bvorw\.,circa,normalization,normalize uncertainty marker 'vorw.' to canonical form 'circa'
-"(?i)\b(?:Band|Bd\.|Bd|Nummer|Nr\.|Nr|Teil)\s+\d{1,3}\b",,normalization,strip volume/number annotations before dates (e.g. 'Bd. 1 1950' -> '1950'; 'Nr. 3 1960' -> '1960')
-Januar,01,month,full month name
-Jänner,01,month,full month name
-Februar,02,month,full month name
-März,03,month,full month name
-April,04,month,full month name
-Mai,05,month,full month name
-Juni,06,month,full month name
-Juli,07,month,full month name
-August,08,month,full month name
-September,09,month,full month name
-Oktober,10,month,full month name
-November,11,month,full month name
-Dezember,12,month,full month name
-Jan.,01,month,abbreviation with dot
-Jän.,01,month,abbreviation with dot
-Feb.,02,month,abbreviation with dot
-Febr.,02,month,abbreviation with dot
-Mrz.,03,month,abbreviation with dot
-Mär.,03,month,abbreviation with dot
-Mar.,03,month,abbreviation with dot
-Apr.,04,month,abbreviation with dot
-Jun.,06,month,abbreviation with dot
-Jul.,07,month,abbreviation with dot
-Aug.,08,month,abbreviation with dot
-Sept.,09,month,abbreviation with dot
-Sep.,09,month,abbreviation with dot
-Okt.,10,month,abbreviation with dot
-Oct.,10,month,abbreviation with dot
-Nov.,11,month,abbreviation with dot
-Dez.,12,month,abbreviation with dot
-Dec.,12,month,abbreviation with dot
-Jan,01,month,abbreviation without dot
-Jän,01,month,abbreviation without dot
-Feb,02,month,abbreviation without dot
-Febr,02,month,abbreviation without dot
-Mrz,03,month,abbreviation without dot
-Mär,03,month,abbreviation without dot
-Mar,03,month,abbreviation without dot
-Apr,04,month,abbreviation without dot
-Jun,06,month,abbreviation without dot
-Jul,07,month,abbreviation without dot
-Aug,08,month,abbreviation without dot
-Sept,09,month,abbreviation without dot
-Sep,09,month,abbreviation without dot
-Okt,10,month,abbreviation without dot
-Oct,10,month,abbreviation without dot
-Nov,11,month,abbreviation without dot
-Dez,12,month,abbreviation without dot
-Dec,12,month,abbreviation without dot
-Montag,GG,weekday,weekday token
-Dienstag,GG,weekday,weekday token
-Mittwoch,GG,weekday,weekday token
-Donnerstag,GG,weekday,weekday token
-Freitag,GG,weekday,weekday token
-Samstag,GG,weekday,weekday token
-Sonntag,GG,weekday,weekday token
+id,from,to,type,comment
+N1,(?i)\bv\.?\s*Chr\.?(?=\s|$),v. Chr.,normalization,normalize BCE abbreviation variants
+N2,(?i)\bn\.?\s*Chr\.?(?=\s|$),n. Chr.,normalization,normalize CE abbreviation variants
+N3,(?i)\bMio\.?(?=\s|$),Mio.,normalization,normalize million abbreviation variants
+N4,(?i)\bMillion(?:en)?(?=\s|$),Mio.,normalization,normalize million word variants
+N5,(?i)\bMrd\.?(?=\s|$),Mrd.,normalization,normalize milliard abbreviation variants
+N6,(?i)\bMilliard(?:e|en)(?=\s|$),Mrd.,normalization,normalize milliard word variants
+N7,(?i)\bBill\.?(?=\s|$),Billionen,normalization,normalize billion abbreviation variants
+N8,(?i)\bBillion(?:en)?(?=\s|$),Billionen,normalization,normalize billion word variants
+N9,"(?i)\b(?:Band|Bd\.|Bd|Nummer|Nr\.|Nr|Teil)\s+\d{1,3}\b",,normalization,strip volume/number annotations before dates (e.g. 'Bd. 1 1950' -> '1950'; 'Nr. 3 1960' -> '1960')
+N10,[\-\u2010\u2011\u2012\u2013\u2014\u2015\u2212\uFE58\uFE63\uFF0D]+,-,normalization,Normalizes all Unicode dash and minus characters to a standard ASCII hyphen-minus (-).
+N11,(?i)\bterminus\s+post\s+quem\b,ab,normalization,normalize formal earliest-date marker 'terminus post quem' to canonical form 'ab'
+N12,(?i)\bt\.\s*p\.\s*q\.(?=\s|\z),ab,normalization,normalize abbreviation 't. p. q.' to canonical form 'ab'
+N13,(?i)\btpq\b,ab,normalization,normalize abbreviation 'TPQ' to canonical form 'ab'
+N14,(?i)\bpost\s+quem\b,ab,normalization,normalize formal marker 'post quem' to canonical form 'ab'
+N15,(?i)\bterminus\s+ante\s+quem\b,bis,normalization,normalize formal latest-date marker 'terminus ante quem' to canonical form 'bis'
+N16,(?i)\bt\.\s*a\.\s*q\.(?=\s|\z),bis,normalization,normalize abbreviation 't. a. q.' to canonical form 'bis'
+N17,(?i)\btaq\b,bis,normalization,normalize abbreviation 'TAQ' to canonical form 'bis'
+N18,(?i)\bante\s+quem\b,bis,normalization,normalize formal marker 'ante quem' to canonical form 'bis'
+N19,(?i)\bnicht\s+früher\s+als\b,ab,normalization,normalize phrase 'nicht früher als' to canonical form 'ab'
+N20,(?i)\bnicht\s+vor\b,ab,normalization,normalize phrase 'nicht vor' to canonical form 'ab' because it means not earlier than
+N21,(?i)\bnicht\s+später\s+als\b,bis,normalization,normalize phrase 'nicht später als' to canonical form 'bis'
+N22,(?i)\bnicht\s+nach\b,bis,normalization,normalize phrase 'nicht nach' to canonical form 'bis' because it means not later than
+N23,(?i)\bbis\s+vor\b,vor,normalization,normalize phrase 'bis vor' to canonical form 'vor'
+N24,(?i)\b(?:noch|bereits)\s+vor\b,vor,normalization,normalize emphasized before-date phrase to canonical form 'vor'
+N25,(?i)\berst\s+nach\b,nach,normalization,normalize emphasized after-date phrase 'erst nach' to canonical form 'nach'
+N26,(?i)\bnicht\s+eindeutig\b,vermutlich,normalization,normalize uncertainty phrase 'nicht eindeutig' to canonical form 'vermutlich'
+N27,(?i)\bnicht\s+gesichert\b,vermutlich,normalization,normalize uncertainty phrase 'nicht gesichert' to canonical form 'vermutlich'
+N28,(?i)\bfrühestens\b,ab,normalization,normalize earliest-date marker 'frühestens' to canonical form 'ab'
+N29,(?i)\bbeginnend\s+(?:mit|ab|seit)\b,ab,normalization,normalize compound start marker such as 'beginnend mit' to canonical form 'ab'
+N30,(?i)\banfangend\s+(?:mit|ab|seit)\b,ab,normalization,normalize compound start marker such as 'anfangend mit' to canonical form 'ab'
+N31,(?i)\bvon\s+Anfang\s+an\b,ab,normalization,normalize phrase 'von Anfang an' to canonical form 'ab'
+N32,(?i)\bab\s+(?:dem|der|den)\b,ab,normalization,normalize inflected 'ab' phrase to canonical form 'ab'
+N33,(?i)\bseit\s+(?:dem|der|den)\b,ab,normalization,normalize inflected 'seit' phrase to canonical form 'ab'
+N34,(?i)\bvon\s+(?:dem|der|den)\b,ab,normalization,normalize inflected 'von' phrase to canonical form 'ab' when used as a date start marker
+N35,(?i)\bvom\b,ab,normalization,normalize contracted 'vom' to canonical form 'ab' when used as a date start marker
+N36,(?i)\bbeginnend\b,ab,normalization,normalize start marker 'beginnend' to canonical form 'ab'
+N37,(?i)\banfangend\b,ab,normalization,normalize start marker 'anfangend' to canonical form 'ab'
+N38,(?i)\bab\.(?=\s|\z),ab,normalization,normalize dotted form 'ab.' to canonical form 'ab'
+N39,(?i)\bseit\.(?=\s|\z),ab,normalization,normalize dotted form 'seit.' to canonical form 'ab'
+N40,(?i)(?<![\w.])a\.(?=\s*\d),ab,normalization,normalize cautious abbreviation 'a.' before a numeric date to canonical form 'ab'
+N41,(?i)\bab\b,ab,normalization,normalize start marker 'ab' to canonical form 'ab'
+N42,(?i)\bseit\b,ab,normalization,normalize start marker 'seit' to canonical form 'ab'
+N43,(?i)\bbis\s+einschließlich\b,bis,normalization,normalize inclusive latest-date marker 'bis einschließlich' to canonical form 'bis'
+N44,(?i)\bbis\s+inklusive\b,bis,normalization,normalize inclusive latest-date marker 'bis inklusive' to canonical form 'bis'
+N45,(?i)\bbis\s+incl\.(?=\s|\z),bis,normalization,normalize abbreviation 'bis incl.' to canonical form 'bis'
+N46,(?i)\bbis\s+inkl\.(?=\s|\z),bis,normalization,normalize abbreviation 'bis inkl.' to canonical form 'bis'
+N47,(?i)\bbis\s+(?:zum|zur|zu|den|dem|der)\b,bis,normalization,normalize inflected 'bis' phrase to canonical form 'bis'
+N48,(?i)\b(?:höchstens|maximal|längstens)\s+bis\b,bis,normalization,normalize bounded latest-date phrase such as 'höchstens bis' to canonical form 'bis'
+N49,(?i)\bendend\s+mit\b,bis,normalization,normalize end marker 'endend mit' to canonical form 'bis'
+N50,(?i)\bendet(?:e)?\s+mit\b,bis,normalization,normalize end marker 'endet mit' or 'endete mit' to canonical form 'bis'
+N51,(?i)\bbis\s+(?:Anfang|Mitte|Ende)\b,bis,normalization,"normalize phrase 'bis Anfang', 'bis Mitte' or 'bis Ende' to canonical form 'bis'"
+N52,(?i)\bspätestens\b,bis,normalization,normalize latest-date marker 'spätestens' to canonical form 'bis'
+N53,(?i)\bendend\b,bis,normalization,normalize end marker 'endend' to canonical form 'bis'
+N54,(?i)\binkl\.(?=\s|\z),bis,normalization,normalize abbreviation 'inkl.' to canonical form 'bis' in date ranges
+N55,(?i)\bincl\.(?=\s|\z),bis,normalization,normalize abbreviation 'incl.' to canonical form 'bis' in date ranges
+N56,(?i)\bbis\.(?=\s|\z),bis,normalization,normalize dotted form 'bis.' to canonical form 'bis'
+N57,(?i)(?<![\w.])b\.(?=\s*\d),bis,normalization,normalize cautious abbreviation 'b.' before a numeric date to canonical form 'bis'
+N58,(?i)\bbis\b,bis,normalization,normalize latest-date marker 'bis' to canonical form 'bis'
+N59,(?i)\bfrüher\s+als\b,vor,normalization,normalize before-date phrase 'früher als' to canonical form 'vor'
+N60,(?i)\beher\s+als\b,vor,normalization,normalize before-date phrase 'eher als' to canonical form 'vor'
+N61,(?i)\bälter\s+als\b,vor,normalization,normalize older-than marker 'älter als' to canonical form 'vor'
+N62,(?i)\bvor\s+(?:dem|der|den)\b,vor,normalization,normalize inflected 'vor' phrase to canonical form 'vor'
+N63,(?i)\b(?:vorangehend|vorausgehend)\b,vor,normalization,normalize preceding marker to canonical form 'vor'
+N64,(?i)\bvorher\b,vor,normalization,normalize before-date marker 'vorher' to canonical form 'vor'
+N65,(?i)\bzuvor\b,vor,normalization,normalize before-date marker 'zuvor' to canonical form 'vor'
+N66,(?i)\bante\b,vor,normalization,normalize Latin before-date marker 'ante' to canonical form 'vor'
+N67,(?i)\b(?:prä|prae|pre)\s*[-–—]?\s*(?=\d),vor,normalization,"normalize prefix marker 'prä', 'prae' or 'pre' before a numeric date; whitespace is fixed later without replacement groups"
+N68,<\s*(?=\d),vor,normalization,normalize symbolic before marker '<' before a numeric date; whitespace is fixed later without replacement groups
+N69,(?i)<\s*(?:c\.\s*a\.?|c\s+a\.?|c[-.]?a\.?|c\.|cca\.?|circa|cirka|zirka|circ\.|cir\.|zirk\.|zir\.|ungef\.?|etw\.?|etwa|ungefähr|gegen|um|annähernd|annäherungsweise|näherungsweise|rund|grob|approx\.?|approximativ|approximiert|geschätzt|schätzungsweise)\s*[-–—]?\s*(?=\d),vor um,normalization,normalize symbolic before marker '<' before an approximate numeric date marker
+N70,(?i)<\s*(?=(?:ca\.?|c\.?|cca\.?|circa|cirka|zirka|um|etwa|gegen)),vor,normalization,normalize symbolic before marker '<' before an approximate date marker
+N71,(?i)\bvor\.(?=\s|\z),vor,normalization,normalize dotted form 'vor.' to canonical form 'vor'
+N72,(?i)(?<![\w.])v\.(?=\s*\d),vor,normalization,normalize cautious abbreviation 'v.' before a numeric date to canonical form 'vor'
+N73,(?i)\bvor\b,vor,normalization,normalize before-date marker 'vor' to canonical form 'vor'
+N74,(?i)\bspäter\s+als\b,nach,normalization,normalize after-date phrase 'später als' to canonical form 'nach'
+N75,(?i)\bjünger\s+als\b,nach,normalization,normalize newer-than marker 'jünger als' to canonical form 'nach'
+N76,(?i)\bim\s+Anschluss\s+an\b,nach,normalization,normalize phrase 'im Anschluss an' to canonical form 'nach'
+N77,(?i)\banschließend\s+an\b,nach,normalization,normalize phrase 'anschließend an' to canonical form 'nach'
+N78,(?i)\bfolgend\s+auf\b,nach,normalization,normalize phrase 'folgend auf' to canonical form 'nach'
+N79,(?i)\bnach\s+(?:dem|der|den)\b,nach,normalization,normalize inflected 'nach' phrase to canonical form 'nach'
+N80,(?i)\bnachfolgend\b,nach,normalization,normalize following marker 'nachfolgend' to canonical form 'nach'
+N81,(?i)\bdanach\b,nach,normalization,normalize after-date marker 'danach' to canonical form 'nach'
+N82,(?i)\bnachher\b,nach,normalization,normalize after-date marker 'nachher' to canonical form 'nach'
+N83,(?i)\bpost\b,nach,normalization,normalize Latin after-date marker 'post' to canonical form 'nach'
+N84,>\s*(?=\d),nach,normalization,normalize symbolic after marker '>' before a numeric date; whitespace is fixed later without replacement groups
+N85,(?i)>\s*(?:c\.\s*a\.?|c\s+a\.?|c[-.]?a\.?|c\.|cca\.?|circa|cirka|zirka|circ\.|cir\.|zirk\.|zir\.|ungef\.?|etw\.?|etwa|ungefähr|gegen|um|annähernd|annäherungsweise|näherungsweise|rund|grob|approx\.?|approximativ|approximiert|geschätzt|schätzungsweise)\s*[-–—]?\s*(?=\d),nach um,normalization,normalize symbolic after marker '>' before an approximate numeric date marker
+N86,(?i)>\s*(?=(?:ca\.?|c\.?|cca\.?|circa|cirka|zirka|um|etwa|gegen)),nach,normalization,normalize symbolic after marker '>' before an approximate date marker
+N87,(?i)\bnach\.(?=\s|\z),nach,normalization,normalize dotted form 'nach.' to canonical form 'nach'
+N88,(?i)(?<![\w.])n\.(?=\s*\d),nach,normalization,normalize cautious abbreviation 'n.' before a numeric date to canonical form 'nach'
+N89,(?i)\bnach\b,nach,normalization,normalize after-date marker 'nach' to canonical form 'nach'
+N90,(?i)\b(?:c\.\s*a\.?|c\s+a\.?|c[-.]?a\.?|c\.|cca\.?|circa|cirka|zirka)\s*[-–—]\s*(?:c\.\s*a\.?|c\s+a\.?|c[-.]?a\.?|c\.|cca\.?|circa|cirka|zirka)\b,um - um,normalization,normalize approximate range marker variants like 'ca - ca' or 'ca.–ca.' to canonical form 'um - um'
+N91,(?i)\b(?:um|gegen)\s+(?:etwa|ca\.?|c\.?|circa|cirka|zirka)\s*(?=\d),um,normalization,"normalize compound around-date marker before a numeric date, e.g. 'um ca.1982'; whitespace is fixed later"
+N92,(?i)\b(?:um|gegen)\s+(?:etwa|ca\.?)\b,um,normalization,normalize compound around-date marker such as 'um etwa' or 'gegen ca.' to canonical form 'um'
+N93,(?i)\bca\.?\s+um\b,um,normalization,normalize compound around-date marker 'ca. um' to canonical form 'um'
+N94,(?i)\b(?:ungefähr|etwa)\s+um\b,um,normalization,normalize compound around-date marker such as 'ungefähr um' to canonical form 'um'
+N95,(?i)\b(?:c\.\s*a\.?|c\s+a\.?|c[-.]?a\.?|c\.|cca\.?|circa|cirka|zirka|circ\.|cir\.|zirk\.|zir\.|ungef\.?|etw\.?|etwa|ungefähr|gegen|um|annähernd|annäherungsweise|näherungsweise|rund|grob|approx\.?|approximativ|approximiert|geschätzt|schätzungsweise)\s*[-–—]?\s*(?=\d),um,normalization,"normalize approximate marker before a numeric date, including missing whitespace such as 'ca.1982'; whitespace is fixed later"
+N96,[~≈]\s*(?=\d),um,normalization,normalize symbolic approximation marker before a numeric date; whitespace is fixed later
+N97,(?:±|\+\s*/\s*-|\+\s*-|\+\s*\/\s*\-)\s*(?=\d),um,normalization,normalize plus-minus marker before a numeric date; whitespace is fixed later
+N98,(?i)\bum\s+herum\b,um,normalization,normalize phrase 'um herum' to canonical form 'um'
+N99,(?i)\brund\s+um\b,um,normalization,normalize phrase 'rund um' to canonical form 'um'
+N100,(?i)\bgrob\s+um\b,um,normalization,normalize phrase 'grob um' to canonical form 'um'
+N101,(?i)\bin\s+etwa\b,um,normalization,normalize phrase 'in etwa' to canonical form 'um'
+N102,(?i)\bmehr\s+oder\s+weniger\b,um,normalization,normalize phrase 'mehr oder weniger' to canonical form 'um'
+N103,(?i)\b(?:annäherungsweise|näherungsweise)\b,um,normalization,normalize approximation marker to canonical form 'um'
+N104,(?i)\b(?:schätzungsweise|approximativ|approximiert)\b,um,normalization,normalize estimated-date marker to canonical form 'um'
+N105,(?i)\bplus\s*/\s*minus\b,um,normalization,normalize plus/minus expression to canonical form 'um'
+N106,(?i)\bplusminus\b,um,normalization,normalize plusminus expression to canonical form 'um'
+N107,(?i)\b(?:circa|cirka|zirka)\.(?=\s|\z),um,normalization,normalize dotted long around-date marker to canonical form 'um'
+N108,(?i)\b(?:circa|cirka|zirka)\b,um,normalization,normalize long around-date marker to canonical form 'um'
+N109,(?i)\b(?:ungef\.|ungef|etw\.|etw)\b,um,normalization,normalize abbreviation for 'ungefähr' or 'etwa' to canonical form 'um'
+N110,(?i)\b(?:circ\.|cir\.|zirk\.|zir\.)(?=\s|\z),um,normalization,normalize abbreviated around-date marker to canonical form 'um'
+N111,(?i)\bc\.\s*a\.(?=\s|\z),um,normalization,normalize misspelling 'c.a.' to canonical form 'um'
+N112,(?i)\bc\s+a\.?(?=\s|\z),um,normalization,normalize spaced misspelling 'c a' to canonical form 'um'
+N113,(?i)\bc[-.]?a\.?(?=\s|\z),um,normalization,"normalize compact variants 'ca', 'ca.' and 'c-a' to canonical form 'um'"
+N114,(?i)\bc\.(?=\s|\z),um,normalization,normalize abbreviation 'c.' to canonical form 'um'
+N115,(?i)\bcca\.(?=\s|\z),um,normalization,normalize variant 'cca.' to canonical form 'um'
+N116,(?i)\bcca\b,um,normalization,normalize variant 'cca' to canonical form 'um'
+N117,(?i)\bungefähr\b,um,normalization,normalize around-date marker 'ungefähr' to canonical form 'um'
+N118,(?i)\betwa\b,um,normalization,normalize around-date marker 'etwa' to canonical form 'um'
+N119,(?i)\bgegen\b,um,normalization,normalize around-date marker 'gegen' to canonical form 'um'
+N120,(?i)\bannähernd\b,um,normalization,normalize approximation marker 'annähernd' to canonical form 'um'
+N121,(?i)\brund\b,um,normalization,normalize approximation marker 'rund' to canonical form 'um'
+N122,(?i)\bgrob\b,um,normalization,normalize approximation marker 'grob' to canonical form 'um'
+N123,(?i)\bgeschätzt\b,um,normalization,normalize estimated-date marker 'geschätzt' to canonical form 'um'
+N124,(?i)\bapprox\.(?=\s|\z),um,normalization,normalize abbreviation 'approx.' to canonical form 'um'
+N125,(?i)\bum\b,um,normalization,normalize around-date marker 'um' to canonical form 'um'
+N126,[~≈],um,normalization,normalize symbolic approximation marker to canonical form 'um'
+N127,(?:±|\+\s*/\s*-|\+\s*-|\+\s*\/\s*\-),um,normalization,normalize plus-minus symbol to canonical form 'um'
+N128,(?i)\b(?:wohl|vermutlich|vermutl\.?|verm\.?|wahrscheinlich|wahrsch\.?|wahrscheinl\.?|mutmaßlich|mutm\.?|möglicherweise|mögl\.?|vielleicht|evtl\.?|eventuell|ggf\.?|gegebenenfalls)\s*(?=\d),vermutlich,normalization,"normalize uncertainty marker before a numeric date, including missing whitespace such as 'wohl1923'; whitespace is fixed later"
+N129,(?:\(\s*\?\s*\)|\[\s*\?\s*\])\s*(?=\d),vermutlich,normalization,normalize bracketed question-mark uncertainty marker before a numeric date; whitespace is fixed later
+N130,(?i)\b(?:wahrscheinlich|mutmaßlich|möglicherweise)\b,vermutlich,normalization,normalize uncertainty marker to canonical form 'vermutlich'
+N131,(?i)\b(?:anscheinend|offenbar|scheinbar)\b,vermutlich,normalization,normalize evidential uncertainty marker to canonical form 'vermutlich'
+N132,(?i)\b(?:rekonstruiert|erschlossen|angenommen|vermutet)\b,vermutlich,normalization,normalize inferred-date marker to canonical form 'vermutlich'
+N133,(?i)\b(?:fraglich|zweifelhaft|unsicher|hypothetisch|vermeintlich)\b,vermutlich,normalization,normalize uncertain-date marker to canonical form 'vermutlich'
+N134,(?i)\b(?:wahrsch\.|wahrscheinl\.|vermutl\.|vermutl|verm\.|mutm\.|mögl\.|evtl\.)\b,vermutlich,normalization,normalize abbreviated uncertainty marker to canonical form 'vermutlich'
+N135,(?i)\b(?:eventuell|gegebenenfalls|ggf\.)\b,vermutlich,normalization,normalize possible-date marker to canonical form 'vermutlich'
+N136,(?i)\bwohl\b,vermutlich,normalization,normalize uncertainty marker 'wohl' to canonical form 'vermutlich'
+N137,(?i)\bvielleicht\b,vermutlich,normalization,normalize uncertainty marker 'vielleicht' to canonical form 'vermutlich'
+N138,(?i)\bvermutlich\b,vermutlich,normalization,normalize uncertainty marker 'vermutlich' to canonical form 'vermutlich'
+N139,(?i)\[\s*(?:vermutlich|wahrscheinlich|unsicher)\s*\],vermutlich,normalization,normalize bracketed uncertainty marker to canonical form 'vermutlich'
+N140,\(\s*\?\s*\)|\[\s*\?\s*\],vermutlich,normalization,normalize bracketed question-mark uncertainty marker to canonical form 'vermutlich'
+N141,(?i)\babum(?=\d),ab um,normalization,insert missing whitespace between canonical markers 'ab' and 'um' before a numeric date
+N142,(?i)\bbisum(?=\d),bis um,normalization,insert missing whitespace between canonical markers 'bis' and 'um' before a numeric date
+N143,(?i)\bvorum(?=\d),vor um,normalization,insert missing whitespace between canonical markers 'vor' and 'um' before a numeric date
+N144,(?i)\bnachum(?=\d),nach um,normalization,insert missing whitespace between canonical markers 'nach' and 'um' before a numeric date
+N145,(?i)\bvermutlichum(?=\d),vermutlich um,normalization,insert missing whitespace between canonical markers 'vermutlich' and 'um' before a numeric date
+N146,(?i)\bum0,um 0,normalization,insert missing whitespace between canonical marker 'um' and digit '0' without using replacement groups
+N147,(?i)\bum1,um 1,normalization,insert missing whitespace between canonical marker 'um' and digit '1' without using replacement groups
+N148,(?i)\bum2,um 2,normalization,insert missing whitespace between canonical marker 'um' and digit '2' without using replacement groups
+N149,(?i)\bum3,um 3,normalization,insert missing whitespace between canonical marker 'um' and digit '3' without using replacement groups
+N150,(?i)\bum4,um 4,normalization,insert missing whitespace between canonical marker 'um' and digit '4' without using replacement groups
+N151,(?i)\bum5,um 5,normalization,insert missing whitespace between canonical marker 'um' and digit '5' without using replacement groups
+N152,(?i)\bum6,um 6,normalization,insert missing whitespace between canonical marker 'um' and digit '6' without using replacement groups
+N153,(?i)\bum7,um 7,normalization,insert missing whitespace between canonical marker 'um' and digit '7' without using replacement groups
+N154,(?i)\bum8,um 8,normalization,insert missing whitespace between canonical marker 'um' and digit '8' without using replacement groups
+N155,(?i)\bum9,um 9,normalization,insert missing whitespace between canonical marker 'um' and digit '9' without using replacement groups
+N156,(?i)\bab0,ab 0,normalization,insert missing whitespace between canonical marker 'ab' and digit '0' without using replacement groups
+N157,(?i)\bab1,ab 1,normalization,insert missing whitespace between canonical marker 'ab' and digit '1' without using replacement groups
+N158,(?i)\bab2,ab 2,normalization,insert missing whitespace between canonical marker 'ab' and digit '2' without using replacement groups
+N159,(?i)\bab3,ab 3,normalization,insert missing whitespace between canonical marker 'ab' and digit '3' without using replacement groups
+N160,(?i)\bab4,ab 4,normalization,insert missing whitespace between canonical marker 'ab' and digit '4' without using replacement groups
+N161,(?i)\bab5,ab 5,normalization,insert missing whitespace between canonical marker 'ab' and digit '5' without using replacement groups
+N162,(?i)\bab6,ab 6,normalization,insert missing whitespace between canonical marker 'ab' and digit '6' without using replacement groups
+N163,(?i)\bab7,ab 7,normalization,insert missing whitespace between canonical marker 'ab' and digit '7' without using replacement groups
+N164,(?i)\bab8,ab 8,normalization,insert missing whitespace between canonical marker 'ab' and digit '8' without using replacement groups
+N165,(?i)\bab9,ab 9,normalization,insert missing whitespace between canonical marker 'ab' and digit '9' without using replacement groups
+N166,(?i)\bbis0,bis 0,normalization,insert missing whitespace between canonical marker 'bis' and digit '0' without using replacement groups
+N167,(?i)\bbis1,bis 1,normalization,insert missing whitespace between canonical marker 'bis' and digit '1' without using replacement groups
+N168,(?i)\bbis2,bis 2,normalization,insert missing whitespace between canonical marker 'bis' and digit '2' without using replacement groups
+N169,(?i)\bbis3,bis 3,normalization,insert missing whitespace between canonical marker 'bis' and digit '3' without using replacement groups
+N170,(?i)\bbis4,bis 4,normalization,insert missing whitespace between canonical marker 'bis' and digit '4' without using replacement groups
+N171,(?i)\bbis5,bis 5,normalization,insert missing whitespace between canonical marker 'bis' and digit '5' without using replacement groups
+N172,(?i)\bbis6,bis 6,normalization,insert missing whitespace between canonical marker 'bis' and digit '6' without using replacement groups
+N173,(?i)\bbis7,bis 7,normalization,insert missing whitespace between canonical marker 'bis' and digit '7' without using replacement groups
+N174,(?i)\bbis8,bis 8,normalization,insert missing whitespace between canonical marker 'bis' and digit '8' without using replacement groups
+N175,(?i)\bbis9,bis 9,normalization,insert missing whitespace between canonical marker 'bis' and digit '9' without using replacement groups
+N176,(?i)\bvor0,vor 0,normalization,insert missing whitespace between canonical marker 'vor' and digit '0' without using replacement groups
+N177,(?i)\bvor1,vor 1,normalization,insert missing whitespace between canonical marker 'vor' and digit '1' without using replacement groups
+N178,(?i)\bvor2,vor 2,normalization,insert missing whitespace between canonical marker 'vor' and digit '2' without using replacement groups
+N179,(?i)\bvor3,vor 3,normalization,insert missing whitespace between canonical marker 'vor' and digit '3' without using replacement groups
+N180,(?i)\bvor4,vor 4,normalization,insert missing whitespace between canonical marker 'vor' and digit '4' without using replacement groups
+N181,(?i)\bvor5,vor 5,normalization,insert missing whitespace between canonical marker 'vor' and digit '5' without using replacement groups
+N182,(?i)\bvor6,vor 6,normalization,insert missing whitespace between canonical marker 'vor' and digit '6' without using replacement groups
+N183,(?i)\bvor7,vor 7,normalization,insert missing whitespace between canonical marker 'vor' and digit '7' without using replacement groups
+N184,(?i)\bvor8,vor 8,normalization,insert missing whitespace between canonical marker 'vor' and digit '8' without using replacement groups
+N185,(?i)\bvor9,vor 9,normalization,insert missing whitespace between canonical marker 'vor' and digit '9' without using replacement groups
+N186,(?i)\bnach0,nach 0,normalization,insert missing whitespace between canonical marker 'nach' and digit '0' without using replacement groups
+N187,(?i)\bnach1,nach 1,normalization,insert missing whitespace between canonical marker 'nach' and digit '1' without using replacement groups
+N188,(?i)\bnach2,nach 2,normalization,insert missing whitespace between canonical marker 'nach' and digit '2' without using replacement groups
+N189,(?i)\bnach3,nach 3,normalization,insert missing whitespace between canonical marker 'nach' and digit '3' without using replacement groups
+N190,(?i)\bnach4,nach 4,normalization,insert missing whitespace between canonical marker 'nach' and digit '4' without using replacement groups
+N191,(?i)\bnach5,nach 5,normalization,insert missing whitespace between canonical marker 'nach' and digit '5' without using replacement groups
+N192,(?i)\bnach6,nach 6,normalization,insert missing whitespace between canonical marker 'nach' and digit '6' without using replacement groups
+N193,(?i)\bnach7,nach 7,normalization,insert missing whitespace between canonical marker 'nach' and digit '7' without using replacement groups
+N194,(?i)\bnach8,nach 8,normalization,insert missing whitespace between canonical marker 'nach' and digit '8' without using replacement groups
+N195,(?i)\bnach9,nach 9,normalization,insert missing whitespace between canonical marker 'nach' and digit '9' without using replacement groups
+N196,(?i)\bvermutlich0,vermutlich 0,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '0' without using replacement groups
+N197,(?i)\bvermutlich1,vermutlich 1,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '1' without using replacement groups
+N198,(?i)\bvermutlich2,vermutlich 2,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '2' without using replacement groups
+N199,(?i)\bvermutlich3,vermutlich 3,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '3' without using replacement groups
+N200,(?i)\bvermutlich4,vermutlich 4,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '4' without using replacement groups
+N201,(?i)\bvermutlich5,vermutlich 5,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '5' without using replacement groups
+N202,(?i)\bvermutlich6,vermutlich 6,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '6' without using replacement groups
+N203,(?i)\bvermutlich7,vermutlich 7,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '7' without using replacement groups
+N204,(?i)\bvermutlich8,vermutlich 8,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '8' without using replacement groups
+N205,(?i)\bvermutlich9,vermutlich 9,normalization,insert missing whitespace between canonical marker 'vermutlich' and digit '9' without using replacement groups
+M1,Januar,01,month,full month name
+M2,Jänner,01,month,full month name
+M3,Februar,02,month,full month name
+M4,März,03,month,full month name
+M5,April,04,month,full month name
+M6,Mai,05,month,full month name
+M7,Juni,06,month,full month name
+M8,Juli,07,month,full month name
+M9,August,08,month,full month name
+M10,September,09,month,full month name
+M11,Oktober,10,month,full month name
+M12,November,11,month,full month name
+M13,Dezember,12,month,full month name
+M14,Jan.,01,month,abbreviation with dot
+M15,Jän.,01,month,abbreviation with dot
+M16,Feb.,02,month,abbreviation with dot
+M17,Febr.,02,month,abbreviation with dot
+M18,Mrz.,03,month,abbreviation with dot
+M19,Mär.,03,month,abbreviation with dot
+M20,Mar.,03,month,abbreviation with dot
+M21,Apr.,04,month,abbreviation with dot
+M22,Jun.,06,month,abbreviation with dot
+M23,Jul.,07,month,abbreviation with dot
+M24,Aug.,08,month,abbreviation with dot
+M25,Sept.,09,month,abbreviation with dot
+M26,Sep.,09,month,abbreviation with dot
+M27,Okt.,10,month,abbreviation with dot
+M28,Oct.,10,month,abbreviation with dot
+M29,Nov.,11,month,abbreviation with dot
+M30,Dez.,12,month,abbreviation with dot
+M31,Dec.,12,month,abbreviation with dot
+M32,Jan,01,month,abbreviation without dot
+M33,Jän,01,month,abbreviation without dot
+M34,Feb,02,month,abbreviation without dot
+M35,Febr,02,month,abbreviation without dot
+M36,Mrz,03,month,abbreviation without dot
+M37,Mär,03,month,abbreviation without dot
+M38,Mar,03,month,abbreviation without dot
+M39,Apr,04,month,abbreviation without dot
+M40,Jun,06,month,abbreviation without dot
+M41,Jul,07,month,abbreviation without dot
+M42,Aug,08,month,abbreviation without dot
+M43,Sept,09,month,abbreviation without dot
+M44,Sep,09,month,abbreviation without dot
+M45,Okt,10,month,abbreviation without dot
+M46,Oct,10,month,abbreviation without dot
+M47,Nov,11,month,abbreviation without dot
+M48,Dez,12,month,abbreviation without dot
+M49,Dec,12,month,abbreviation without dot
+WD1,Montag,GG,weekday,weekday token
+WD2,Dienstag,GG,weekday,weekday token
+WD3,Mittwoch,GG,weekday,weekday token
+WD4,Donnerstag,GG,weekday,weekday token
+WD5,Freitag,GG,weekday,weekday token
+WD6,Samstag,GG,weekday,weekday token
+WD7,Sonntag,GG,weekday,weekday token
+WD8,Mo\.,GG,weekday,weekday token
+WD9,Di\.,GG,weekday,weekday token
+WD10,Mi\.,GG,weekday,weekday token
+WD11,Do\.,GG,weekday,weekday token
+WD12,Fr\.,GG,weekday,weekday token
+WD13,Sa\.,GG,weekday,weekday token
+WD14,So\.,GG,weekday,weekday token
+WD15,\bMo\b,GG,weekday,weekday token
+WD16,\bDi\b,GG,weekday,weekday token
+WD17,\bMi\b,GG,weekday,weekday token
+WD18,\bDo\b,GG,weekday,weekday token
+WD19,\bFr\b,GG,weekday,weekday token
+WD20,\bSa\b,GG,weekday,weekday token
+WD21,\bSo\b,GG,weekday,weekday token

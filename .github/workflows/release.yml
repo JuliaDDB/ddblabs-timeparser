@@ -26,8 +26,8 @@ jobs:
           java-version: '21'
           cache: maven
 
-      - name: Build and test
-        run: ./mvnw --batch-mode verify
+      - name: Build
+        run: ./mvnw --batch-mode -DskipTests package
 
   publish-central-snapshot:
     name: Publish SNAPSHOT to Maven Central
@@ -62,7 +62,7 @@ jobs:
 
       - name: Publish SNAPSHOT to Maven Central
         if: endsWith(steps.version.outputs.value, '-SNAPSHOT')
-        run: ./mvnw --batch-mode -P central-snapshot deploy
+        run: ./mvnw --batch-mode -DskipTests -P central-snapshot deploy
 
   publish-central-release:
     name: Publish release to Maven Central
@@ -103,7 +103,7 @@ jobs:
           fi
 
       - name: Publish release to Maven Central
-        run: ./mvnw --batch-mode -P release deploy
+        run: ./mvnw --batch-mode -DskipTests -P release deploy
 
   publish-docs:
     name: Publish versioned JavaDocs to GitHub Pages

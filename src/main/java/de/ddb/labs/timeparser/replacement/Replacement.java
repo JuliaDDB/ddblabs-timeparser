@@ -18,7 +18,9 @@ package de.ddb.labs.timeparser.replacement;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.ToString;
 
 /**
  * Contains a source expression and a target string for normalization or literal
@@ -26,6 +28,8 @@ import lombok.Getter;
  * normalizations.
  */
 @Getter
+@EqualsAndHashCode
+@ToString
 public class Replacement {
 
     private final String from;

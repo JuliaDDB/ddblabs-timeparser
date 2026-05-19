@@ -16,6 +16,10 @@
 package de.ddb.labs.timeparser.rule;
 
 import lombok.EqualsAndHashCode;
+
+import java.util.Set;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -25,28 +29,28 @@ import lombok.ToString;
  */
 @Getter
 @EqualsAndHashCode
+@AllArgsConstructor
 @ToString
 public class Rule {
 
+    @Getter
+    @EqualsAndHashCode
+    @AllArgsConstructor
+    @ToString
+    public static class Test {
+        private final String id;
+        private final String input;
+        private final String normalized;
+        private final String tokenized;
+        private final String output;
+        private final String timespan;
+    }
+
+    private final String id;
     private final String inputMask;
     private final String inputPattern;
-    private final String inputExample;
-    private final String tokenizedExample;
     private final String outputMask;
     private final String outputPattern;
-    private final String outputExample;
-    private final String outputExampleIso;
+    private final Set<Test> tests;
 
-    public Rule(final String inputMask, final String inputPattern, final String inputExample,
-            final String tokenizedExample, final String outputMask, final String outputPattern,
-            final String outputExample, final String outputExampleIso) {
-        this.inputMask = inputMask;
-        this.inputPattern = inputPattern;
-        this.inputExample = inputExample;
-        this.tokenizedExample = tokenizedExample;
-        this.outputMask = outputMask;
-        this.outputPattern = outputPattern;
-        this.outputExample = outputExample;
-        this.outputExampleIso = outputExampleIso;
-    }
 }

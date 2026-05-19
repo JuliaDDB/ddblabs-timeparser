@@ -46,11 +46,11 @@
         <maven.compiler.release>21</maven.compiler.release>
 
         <junit.version>6.0.3</junit.version>
-        <javalin.version>7.1.0</javalin.version>
-        <jackson.version>2.21.2</jackson.version>
+        <javalin.version>7.2.2</javalin.version>
+        <jackson.version>2.21.3</jackson.version>
         <commons.csv.version>1.14.1</commons.csv.version>
         <logback.version>1.5.32</logback.version>
-        <lombok.version>1.18.44</lombok.version>
+        <lombok.version>1.18.46</lombok.version>
 
         <maven.compiler.plugin.version>3.15.0</maven.compiler.plugin.version>
         <maven.surefire.plugin.version>3.5.5</maven.surefire.plugin.version>

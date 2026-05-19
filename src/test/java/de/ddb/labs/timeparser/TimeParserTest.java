@@ -1,49 +1,35 @@
 package de.ddb.labs.timeparser;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import de.ddb.labs.timeparser.http.HttpParseResponse;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.apache.commons.csv.CSVFormat;
-import org.apache.commons.csv.CSVParser;
-import org.apache.commons.csv.CSVRecord;
-
-import de.ddb.labs.timeparser.data.InputParser;
-import de.ddb.labs.timeparser.data.Outputter;
-import de.ddb.labs.timeparser.data.PatternParser;
-import de.ddb.labs.timeparser.data.Token;
-import de.ddb.labs.timeparser.data.TokenWithValue;
 import de.ddb.labs.timeparser.model.ParseErrorStats;
 import de.ddb.labs.timeparser.model.ParseResult;
-import de.ddb.labs.timeparser.replacement.Replacement;
-import de.ddb.labs.timeparser.replacement.ReplacementReader;
+import de.ddb.labs.timeparser.timespan.TimeSpan;
+import de.ddb.labs.timeparser.timespan.TimeSpanParser;
 
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
 import java.time.LocalDate;
 import java.time.temporal.JulianFields;
 import java.util.ArrayList;
-import de.ddb.labs.timeparser.timespan.TimeSpan;
-import de.ddb.labs.timeparser.timespan.TimeSpanParser;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
-import lombok.AccessLevel;
-import lombok.RequiredArgsConstructor;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 /**
- * Regression suite for parser semantics, fail-safe behavior, and rules.csv contract integrity.
+ * Regressionstests für Parser-Semantik, Fehlertoleranz und allgemeine Robustheit.
+ *
+ * <p>CSV-gestützte Regelvalidierung und CSV-Integritätsprüfungen befinden sich
+ * in {@link RulesTest} bzw. {@link CsvIntegrityTest}. HTTP-Serialisierungstests
+ * befinden sich in {@link HttpTest}.</p>
  */
 public class TimeParserTest {
 
@@ -100,36 +86,6 @@ public class TimeParserTest {
         assertEquals("", result.getOutput());
         assertEquals("DateTimeException", result.getErrorType());
         assertNotNull(result.getErrorMessage());
-    }
-
-    @Test
-    @DisplayName("[HTTP] Uses explicit ISO field names in successful HTTP JSON")
-    public void usesExplicitIsoFieldNamesInHttpJson() throws Exception {
-        final ParseResult result = TimeParser.getInstance().parseTimeResult("Mai 2010");
-        final ObjectMapper objectMapper = TimeParserHttpServer.createObjectMapper();
-
-        final String json = objectMapper.writeValueAsString(HttpParseResponse.from(result));
-
-        assertTrue(json.contains("\"startISODate\":\"2010-05-01\""));
-        assertTrue(json.contains("\"endISODate\":\"2010-05-31\""));
-        assertFalse(json.contains("\"startDate\""));
-        assertFalse(json.contains("\"endDate\""));
-    }
-
-    @Test
-    @DisplayName("[HTTP] Omits empty metadata fields from HTTP failure JSON")
-    public void omitsEmptyFieldsFromHttpFailureJson() throws Exception {
-        final ParseResult result = TimeParser.getInstance().parseTimeResult("200 V.Vh");
-        final ObjectMapper objectMapper = TimeParserHttpServer.createObjectMapper();
-
-        final String json = objectMapper.writeValueAsString(HttpParseResponse.from(result));
-
-        assertFalse(json.contains("\"matchingRules\""));
-        assertFalse(json.contains("\"transformedInput\""));
-        assertFalse(json.contains("\"facetNotations\""));
-        assertFalse(json.contains("\"facetString\""));
-        assertFalse(json.contains("\"output\""));
-        assertTrue(json.contains("\"errorType\":\"INVALID_TIME_EXPRESSION\""));
     }
 
     @Test
@@ -326,170 +282,10 @@ public class TimeParserTest {
         assertNotNull(stats.getLastContext());
     }
 
-    @Test
-    @DisplayName("[Steps 1-4] Validates every rules.csv input example against expected output example")
-    public void allRuleInputExamplesMatchOutputExamples() throws Exception {
-        final List<RuleCsvEntry> entries = loadRulesCsvEntries();
-        final PatternParser patternParser = new PatternParser();
-        final int totalRules = entries.size();
-        System.out.println("[rules.csv] validating " + totalRules + " rule examples");
-
-        int validatedRules = 0;
-        for (final RuleCsvEntry entry : entries) {
-            String actualOutput = null;
-            try {
-            final List<Token> inputPattern = patternParser.parse(entry.inputMask, entry.inputPattern);
-            final InputParser inputParser = new InputParser(inputPattern, monthReplacements(), weekdayReplacements());
-            final String normalizedExample = TimeParser.getInstance().applyNormalizationRules(entry.inputExample);
-            final List<TokenWithValue> parsedInputTokens = inputParser.parseInputString(normalizedExample);
-
-            final List<Token> outputPattern = patternParser.parse(true, entry.outputMask, entry.outputPattern);
-                actualOutput = new Outputter(outputPattern).createOutputString(parsedInputTokens);
-
-                assertEquals(entry.outputExample, actualOutput,
-                    buildRuleFailureMessage(entry, actualOutput, null));
-                validatedRules++;
-                if (validatedRules % 100 == 0 || validatedRules == totalRules) {
-                    System.out.println("[rules.csv] validated " + validatedRules + "/" + totalRules);
-                }
-            } catch (AssertionError e) {
-                throw e;
-            } catch (Exception e) {
-                throw new AssertionError(buildRuleFailureMessage(entry, actualOutput, e), e);
-            }
-        }
-
-        System.out.println("[rules.csv] validation complete: " + validatedRules + " rules checked");
-        assertTrue(validatedRules > 0);
-    }
-
-    @Test
-    @DisplayName("[Steps 1-5] Validates every rules.csv ISO example against full TimeParser pipeline")
-    public void allRuleIsoExamplesMatchTimeSpan() throws Exception {
-        final List<RuleCsvEntry> entries = loadRulesCsvEntries().stream()
-            .filter(e -> e.outputExampleIso != null && !e.outputExampleIso.isEmpty())
-            .collect(java.util.stream.Collectors.toList());
-        System.out.println("[rules.csv] validating " + entries.size() + " ISO examples");
-        assertTrue(entries.size() > 0,
-            "No ISO examples found in rules.csv — add 'output example ISO' values to test the full pipeline");
-
-        int validated = 0;
-        for (final RuleCsvEntry entry : entries) {
-            final ParseResult result = TimeParser.getInstance().parseTimeResult(entry.inputExample);
-            assertTrue(result.isSuccessful(),
-                "Parse failed for \"" + entry.inputExample + "\" (line " + entry.lineNumber + "): "
-                + result.getErrorType() + ": " + result.getErrorMessage());
-
-            final String[] parts = entry.outputExampleIso.split("/", 2);
-            final LocalDate expectedStart = LocalDate.parse(parts[0]);
-            final LocalDate expectedEnd = parts.length == 2 ? LocalDate.parse(parts[1]) : expectedStart;
-
-            assertEquals(expectedStart, result.getTimeSpan().getStartDate(),
-                "Start date mismatch (line " + entry.lineNumber + ", input: \"" + entry.inputExample + "\")");
-            assertEquals(expectedEnd, result.getTimeSpan().getEndDate(),
-                "End date mismatch (line " + entry.lineNumber + ", input: \"" + entry.inputExample + "\")");
-            validated++;
-        }
-        System.out.println("[rules.csv] ISO validation complete: " + validated + " examples checked");
-    }
-
-    @Test
-    @DisplayName("[Steps 1-2] Validates every rules.csv tokenized example against normalization and month/weekday tokenization")
-    public void allRuleTokenizedExamplesMatchStep2() throws Exception {
-        final List<RuleCsvEntry> entries = loadRulesCsvEntries();
-        final int totalRules = entries.size();
-        System.out.println("[rules.csv] validating " + totalRules + " tokenized examples");
-
-        int validated = 0;
-        for (final RuleCsvEntry entry : entries) {
-            if (entry.tokenizedExample == null || entry.tokenizedExample.isEmpty()) {
-                continue;
-            }
-            final String normalized = TimeParser.getInstance().applyNormalizationRules(entry.inputExample);
-            final String actual = TimeParser.getInstance().tokenizeMonthsAndWeekdays(normalized);
-            assertEquals(entry.tokenizedExample, actual,
-                "Tokenized example mismatch (line " + entry.lineNumber + ", input: \"" + entry.inputExample + "\")");
-            validated++;
-        }
-        System.out.println("[rules.csv] tokenized validation complete: " + validated + " examples checked");
-        assertEquals(totalRules, validated, "Not all rules have a tokenized example");
-    }
-
-    private String buildRuleFailureMessage(final RuleCsvEntry entry, final String actualOutput, final Exception exception) {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("rules.csv validation failed").append(System.lineSeparator());
-        builder.append("line: ").append(entry.lineNumber).append(System.lineSeparator());
-        builder.append("input example: ").append(entry.inputExample).append(System.lineSeparator());
-        builder.append("input mask/pattern: ").append(entry.inputMask).append(" / ").append(entry.inputPattern).append(System.lineSeparator());
-        builder.append("expected output: ").append(entry.outputExample).append(System.lineSeparator());
-        builder.append("actual output: ").append(actualOutput == null ? "<not produced>" : actualOutput).append(System.lineSeparator());
-        builder.append("output mask/pattern: ").append(entry.outputMask).append(" / ").append(entry.outputPattern);
-        if (exception != null) {
-            builder.append(System.lineSeparator()).append("error: ")
-                .append(exception.getClass().getSimpleName())
-                .append(": ")
-                .append(exception.getMessage());
-        }
-        return builder.toString();
-    }
-
-    private String expectedIndexRange(final TimeSpan timeSpan) {
+    private static String expectedIndexRange(final TimeSpan timeSpan) {
         return timeSpan.getStartDate().getLong(JulianFields.JULIAN_DAY)
                 + "|"
                 + timeSpan.getEndDate().getLong(JulianFields.JULIAN_DAY);
     }
-
-    private List<RuleCsvEntry> loadRulesCsvEntries() throws Exception {
-        final InputStream inputStream = getClass().getClassLoader().getResourceAsStream("conf/timeparser/rules.csv");
-        assertNotNull(inputStream, "rules.csv not found on classpath");
-
-        final List<RuleCsvEntry> entries = new ArrayList<>();
-        final CSVFormat format = CSVFormat.DEFAULT.builder()
-                .setHeader()
-                .setSkipHeaderRecord(true)
-                .setIgnoreEmptyLines(true)
-                .setTrim(true)
-                .get();
-        try (CSVParser parser = CSVParser.parse(new InputStreamReader(inputStream, StandardCharsets.UTF_8), format)) {
-            for (final CSVRecord record : parser) {
-                final int lineNumber = Math.toIntExact(record.getRecordNumber() + 1);
-                assertTrue(record.size() >= 8, "Expected at least 8 columns in rules.csv at line " + lineNumber);
-
-                // col 0=inputMask, 1=inputPattern, 2=inputExample, 3=tokenizedExample,
-                // col 4=outputMask, 5=outputPattern, 6=outputExample, 7=outputExampleIso
-                entries.add(new RuleCsvEntry(
-                    lineNumber,
-                    record.get(0),
-                    record.get(1),
-                    record.get(2),
-                    record.get(3),
-                    record.get(4),
-                    record.get(5),
-                    record.get(6),
-                    record.get(7).trim()));
-            }
-        }
-        return entries;
-    }
-
-    private List<Replacement> monthReplacements() throws Exception {
-        return ReplacementReader.read("conf/timeparser/normalizations.csv", StandardCharsets.UTF_8.name(), false, "month");
-    }
-
-    private List<Replacement> weekdayReplacements() throws Exception {
-        return ReplacementReader.read("conf/timeparser/normalizations.csv", StandardCharsets.UTF_8.name(), false, "weekday");
-    }
-
-    @RequiredArgsConstructor(access = AccessLevel.PRIVATE)
-    private static final class RuleCsvEntry {
-        private final int lineNumber;
-        private final String inputMask;
-        private final String inputPattern;
-        private final String inputExample;
-        private final String tokenizedExample;
-        private final String outputMask;
-        private final String outputPattern;
-        private final String outputExample;
-        private final String outputExampleIso;
-    }
 }
+

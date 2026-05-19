@@ -20,7 +20,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -76,18 +78,24 @@ public final class ReplacementReader {
                 throw new IOException("Replacement file could not be found for the given path \"" + path + "\"");
             }
             try (CSVParser parser = CSVParser.parse(new InputStreamReader(in, charsetName), format)) {
-                for (CSVRecord record : parser) {
-                    final int lineNumber = Math.toIntExact(record.getRecordNumber());
-                    if (record.size() < 2) {
+                for (final String required : new String[]{"id", "from", "to", "type"}) {
+                    if (!parser.getHeaderMap().containsKey(required)) {
                         throw new ParseException(
-                                "Expected at least 2 columns in replacement file \"" + path + "\", line "
-                                        + lineNumber + ": \"" + record + "\"",
-                                lineNumber);
+                                "Required column \"" + required + "\" not found in replacement file \"" + path + "\"", 0);
+                    }
+                }
+                final Set<String> seenIds = new HashSet<>();
+                for (CSVRecord record : parser) {
+                    final String id = record.get("id");
+                    if (!seenIds.add(id)) {
+                        throw new ParseException(
+                                "Duplicate id \"" + id + "\" in replacement file \"" + path + "\"",
+                                Math.toIntExact(record.getRecordNumber()));
                     }
                     if (!matchesCategory(record, category)) {
                         continue;
                     }
-                    replacements.add(new Replacement(record.get(0), record.get(1), regex));
+                    replacements.add(new Replacement(record.get("from"), record.get("to"), regex));
                 }
             }
         }
@@ -99,6 +107,6 @@ public final class ReplacementReader {
         if (category == null || category.isEmpty()) {
             return true;
         }
-        return record.size() >= 3 && category.equalsIgnoreCase(record.get(2));
+        return category.equalsIgnoreCase(record.get("type"));
     }
 }
